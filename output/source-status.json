@@ -1,20 +1,13 @@
 {
-  "generated_at": "2026-09-05T13:43:31.563583+00:00",
-  "proxy_count": 3000,
+  "generated_at": "2026-09-05T14:28:42.462033+00:00",
+  "proxy_count": 1000,
   "sources": [
-    {
-      "name": "hello-world-1989/cn-news",
-      "url": "https://raw.githubusercontent.com/hello-world-1989/cn-news/refs/heads/main/clash.yaml",
-      "ok": true,
-      "received": 2,
-      "added": 2
-    },
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 1830,
-      "added": 1830
+      "received": 1671,
+      "added": 1671
     },
     {
       "name": "PuddinCat/BestClash",
@@ -27,8 +20,8 @@
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1742,
-      "added": 1742
+      "received": 1685,
+      "added": 1685
     },
     {
       "name": "awesome-vpn/awesome-vpn",
