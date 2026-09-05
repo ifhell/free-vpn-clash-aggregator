@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.yaml"
 OUTPUT = ROOT / "output" / "clash.yaml"
 STATUS = ROOT / "output" / "source-status.json"
-MAX_NODES = int(os.getenv("MAX_NODES", "500"))
+MAX_NODES = int(os.getenv("MAX_NODES", "3000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
 
 

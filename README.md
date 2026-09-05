@@ -1,6 +1,6 @@
 # Free VPN Clash Aggregator
 
-这个仓库把 10 个公开的 GitHub Clash/V2Ray 节点项目合并为一个 Clash Meta 配置，失败的上游会被隔离，节点会去重，GitHub Actions 每 15 分钟重新抓取并提交生成文件。
+这个仓库把 10 个公开的 GitHub Clash/V2Ray 节点项目合并为一个 Clash Meta 配置，失败的上游会被隔离，节点会去重，GitHub Actions 每小时重新抓取并提交生成文件。
 
 ## Clash Verge 导入
 
@@ -20,7 +20,7 @@ python -m venv .venv
 .venv/Scripts/python scripts/update.py
 ```
 
-可用 `MAX_NODES=500` 控制输出节点数量上限。建议不要取消上限，否则配置过大可能影响 Clash Verge 启动和测速。
+可用 `MAX_NODES=3000` 控制输出节点数量上限。节点越多，Clash Verge 启动和测速越慢，如需调整请自行权衡。
 
 ## 安全与合规
 
