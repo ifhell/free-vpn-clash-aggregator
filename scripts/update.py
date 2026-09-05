@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.yaml"
 OUTPUT = ROOT / "output" / "clash.yaml"
 STATUS = ROOT / "output" / "source-status.json"
-MAX_NODES = int(os.getenv("MAX_NODES", "3000"))
+MAX_NODES = int(os.getenv("MAX_NODES", "1000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
 
 
@@ -86,7 +86,10 @@ def main() -> int:
     if not proxies:
         raise RuntimeError("all upstream sources failed or returned no Clash proxies")
 
-    proxies = proxies[:MAX_NODES]
+    if len(proxies) > MAX_NODES:
+        with_pipe = [p for p in proxies if "|" in p["name"]]
+        without_pipe = [p for p in proxies if "|" not in p["name"]]
+        proxies = (with_pipe + without_pipe)[:MAX_NODES]
     names = [proxy["name"] for proxy in proxies]
     generated = {
         "mixed-port": 7890,

@@ -1,6 +1,4 @@
 sources:
-  - name: hello-world-1989/cn-news
-    url: https://raw.githubusercontent.com/hello-world-1989/cn-news/refs/heads/main/clash.yaml
   - name: cbusifabcap/daily_free_vpn
     url: https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml
   - name: PuddinCat/BestClash
