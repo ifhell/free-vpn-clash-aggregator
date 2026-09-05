@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-05T14:29:06.892049+00:00",
+  "generated_at": "2026-09-05T17:05:56.040289+00:00",
   "proxy_count": 1000,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 1671,
-      "added": 1671
+      "received": 1708,
+      "added": 1708
     },
     {
       "name": "PuddinCat/BestClash",
@@ -62,8 +62,8 @@
       "name": "peasoft/NoMoreWalls",
       "url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
       "ok": true,
-      "received": 27,
-      "added": 27
+      "received": 29,
+      "added": 29
     },
     {
       "name": "NiceVPN123/NiceVPN",
@@ -76,8 +76,8 @@
       "name": "chengaopan/AutoMergePublicNodes",
       "url": "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
       "ok": true,
-      "received": 27,
-      "added": 27
+      "received": 29,
+      "added": 29
     }
   ]
 }
