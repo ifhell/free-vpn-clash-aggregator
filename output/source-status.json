@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-05T11:34:49.370582+00:00",
+  "generated_at": "2026-09-05T13:43:31.563583+00:00",
   "proxy_count": 3000,
   "sources": [
     {
@@ -14,28 +14,28 @@
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
       "received": 1830,
-      "added": 1296
+      "added": 1830
     },
     {
       "name": "PuddinCat/BestClash",
       "url": "https://raw.githubusercontent.com/PuddinCat/BestClash/main/proxies.yaml",
       "ok": true,
       "received": 16,
-      "added": 4
+      "added": 16
     },
     {
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1798,
-      "added": 494
+      "received": 1742,
+      "added": 1742
     },
     {
       "name": "awesome-vpn/awesome-vpn",
       "url": "https://raw.githubusercontent.com/awesome-vpn/awesome-vpn/master/clash.yaml",
       "ok": true,
       "received": 50,
-      "added": 40
+      "added": 50
     },
     {
       "name": "vxiaov/free_proxies",
@@ -48,15 +48,15 @@
       "name": "ermaozi/get_subscribe",
       "url": "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
       "ok": true,
-      "received": 24,
-      "added": 17
+      "received": 21,
+      "added": 21
     },
     {
       "name": "anaer/Sub",
       "url": "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
       "ok": true,
-      "received": 250,
-      "added": 236
+      "received": 1412,
+      "added": 1412
     },
     {
       "name": "ermaozi01/free_clash_vpn",
@@ -70,21 +70,21 @@
       "url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
       "ok": true,
       "received": 27,
-      "added": 14
+      "added": 27
     },
     {
       "name": "NiceVPN123/NiceVPN",
       "url": "https://raw.githubusercontent.com/NiceVPN123/NiceVPN/main/Clash.yaml",
       "ok": true,
       "received": 3646,
-      "added": 3132
+      "added": 3646
     },
     {
       "name": "chengaopan/AutoMergePublicNodes",
       "url": "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
       "ok": true,
       "received": 27,
-      "added": 0
+      "added": 27
     }
   ]
 }
