@@ -37,8 +37,7 @@ def main() -> int:
         sys.stdout.reconfigure(encoding="utf-8")
     config = yaml.safe_load(SOURCES.read_text(encoding="utf-8"))
     entries = config.get("sources", [])
-    proxies: list[dict] = []
-    seen: set[tuple] = set()
+    collected: list[dict] = []
     status = []
     for source in entries:
         name, url = source["name"], source["url"]
@@ -47,28 +46,42 @@ def main() -> int:
             candidates = document.get("proxies", [])
             if not isinstance(candidates, list):
                 raise ValueError("proxies is not a list")
-            added = 0
+            before = len(collected)
             for proxy in candidates:
-                if not isinstance(proxy, dict) or not proxy.get("name") or not proxy.get("type"):
-                    continue
-                key = fingerprint(proxy)
-                if key in seen:
-                    continue
-                seen.add(key)
-                proxy = dict(proxy)
-                base_name = str(proxy["name"]).strip()[:80]
-                used_names = {item["name"] for item in proxies}
-                candidate_name = base_name
-                suffix = 2
-                while candidate_name in used_names:
-                    candidate_name = f"{base_name} #{suffix}"
-                    suffix += 1
-                proxy["name"] = candidate_name
-                proxies.append(proxy)
-                added += 1
-            status.append({"name": name, "url": url, "ok": True, "received": len(candidates), "added": added})
+                if isinstance(proxy, dict) and proxy.get("name") and proxy.get("type"):
+                    collected.append(dict(proxy))
+            status.append({"name": name, "url": url, "ok": True, "received": len(candidates), "added": len(collected) - before})
         except Exception as exc:  # one broken upstream must not block the other sources
             status.append({"name": name, "url": url, "ok": False, "error": str(exc)})
+
+    # Deduplicate by fingerprint, preferring names that contain "|"
+    deduped: list[dict] = []
+    seen: dict[tuple, int] = {}
+    for proxy in collected:
+        key = fingerprint(proxy)
+        new_name = str(proxy.get("name", "")).strip()[:80]
+        if key in seen:
+            existing = deduped[seen[key]]
+            if "|" in new_name and "|" not in existing["name"]:
+                existing["name"] = new_name
+            continue
+        seen[key] = len(deduped)
+        proxy["name"] = new_name
+        deduped.append(proxy)
+
+    # Fix duplicate names
+    proxies: list[dict] = []
+    used_names: set[str] = set()
+    for proxy in deduped:
+        base_name = proxy["name"]
+        candidate_name = base_name
+        suffix = 2
+        while candidate_name in used_names:
+            candidate_name = f"{base_name} #{suffix}"
+            suffix += 1
+        proxy["name"] = candidate_name
+        used_names.add(candidate_name)
+        proxies.append(proxy)
 
     if not proxies:
         raise RuntimeError("all upstream sources failed or returned no Clash proxies")
