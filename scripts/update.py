@@ -56,6 +56,9 @@ def check_proxy(proxy: dict) -> tuple[bool, str]:
     try:
         with socket.create_connection((server, port), timeout=CHECK_TIMEOUT):
             return True, ""
+    except ConnectionRefusedError as exc:
+        # Refused means the host answered, so the node is not proven dead; keep it
+        return True, f"connection refused (kept): {exc}"
     except OSError as exc:
         return False, f"{exc.__class__.__name__}: {exc}"
 
@@ -109,9 +112,12 @@ def main() -> int:
             results[futures[future]] = future.result()
     available: list[dict] = []
     unavailable_records: list[dict] = []
+    kept_on_refused = 0
     for index, proxy in enumerate(deduped):
         ok, reason = results[index]
         if ok:
+            if reason:
+                kept_on_refused += 1
             available.append(proxy)
             continue
         unavailable_records.append({
@@ -127,6 +133,7 @@ def main() -> int:
         "checked": len(deduped),
         "available": len(available),
         "unavailable": len(unavailable_records),
+        "kept_on_refused": kept_on_refused,
         "nodes": unavailable_records,
     }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -179,6 +186,7 @@ def main() -> int:
         "proxy_count": len(proxies),
         "checked": len(deduped),
         "unavailable_count": len(unavailable_records),
+        "kept_on_refused": kept_on_refused,
         "sources": status,
     }
     STATUS.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
