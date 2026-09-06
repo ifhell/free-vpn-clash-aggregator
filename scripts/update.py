@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import http.client
 import json
 import os
 import re
@@ -9,6 +10,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 import yaml
 
@@ -21,6 +23,7 @@ MAX_NODES = int(os.getenv("MAX_NODES", "1000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
 CHECK_TIMEOUT = int(os.getenv("CHECK_TIMEOUT", "5"))
 CHECK_WORKERS = int(os.getenv("CHECK_WORKERS", "100"))
+CHECK_URL = os.getenv("CHECK_URL", "https://www.google.com/generate_204")
 # Region caps mirror the proxy groups in clash-verge-local.yaml; filters are copied verbatim
 REGION_CAP = int(os.getenv("REGION_CAP", "100"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
@@ -60,6 +63,23 @@ def fingerprint(proxy: dict) -> tuple:
 UDP_TYPES = {"hysteria", "hysteria2", "tuic", "wireguard"}
 
 
+def check_http_proxy(proxy: dict, server: str, port: int) -> tuple[bool, str]:
+    # http type gets a real request through the proxy (CONNECT tunnel for https), not just a TCP probe
+    auth = ""
+    if proxy.get("username"):
+        auth = quote(str(proxy["username"]))
+        if proxy.get("password"):
+            auth += f":{quote(str(proxy['password']))}"
+        auth += "@"
+    proxy_url = f"http://{auth}{server}:{port}"
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({"http": proxy_url, "https": proxy_url}))
+    try:
+        with opener.open(CHECK_URL, timeout=CHECK_TIMEOUT) as response:
+            return True, ""
+    except (OSError, http.client.HTTPException) as exc:
+        return False, f"{exc.__class__.__name__}: {exc}"
+
+
 def check_proxy(proxy: dict) -> tuple[bool, str]:
     # TCP-level reachability only: proves the port is open, not a full protocol handshake.
     # QUIC/UDP transports never accept TCP connections, so probing them would kill live nodes.
@@ -73,6 +93,8 @@ def check_proxy(proxy: dict) -> tuple[bool, str]:
         return False, f"invalid port: {proxy.get('port')!r}"
     if not server or not 0 < port < 65536:
         return False, f"invalid server/port: {server!r}:{port!r}"
+    if proxy_type == "http":
+        return check_http_proxy(proxy, server, port)
     try:
         with socket.create_connection((server, port), timeout=CHECK_TIMEOUT):
             return True, ""
