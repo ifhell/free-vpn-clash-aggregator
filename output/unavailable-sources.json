@@ -1,10 +1,1354 @@
 {
-  "generated_at": "2026-09-06T11:56:27.528728+00:00",
+  "generated_at": "2026-09-06T11:59:58.451159+00:00",
   "checked": 6431,
-  "available": 4120,
-  "unavailable": 2311,
-  "kept_on_refused": 356,
+  "available": 3857,
+  "unavailable": 2574,
+  "kept_on_refused": 359,
   "nodes": [
+    {
+      "name": "🇷🇴RO_1|1.8MB/s",
+      "type": "http",
+      "server": "193.176.84.22",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_2|1.1MB/s",
+      "type": "http",
+      "server": "193.176.84.30",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_3|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.32",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_4|554KB/s",
+      "type": "http",
+      "server": "193.176.84.24",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_5|1.9MB/s",
+      "type": "http",
+      "server": "193.176.84.21",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_6|960KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.23",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_7|769KB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.25",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_8|1.7MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.31",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_9|1.4MB/s",
+      "type": "http",
+      "server": "193.176.84.39",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_10|1.1MB/s",
+      "type": "http",
+      "server": "193.176.84.38",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_11|1.4MB/s",
+      "type": "http",
+      "server": "193.176.84.20",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_12|1.2MB/s",
+      "type": "http",
+      "server": "193.176.84.35",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_49|3.8MB/s",
+      "type": "http",
+      "server": "84.17.47.147",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_35|790KB/s",
+      "type": "http",
+      "server": "138.199.35.217",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_36|803KB/s",
+      "type": "http",
+      "server": "138.199.35.203",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_50|5.3MB/s|P002-260618",
+      "type": "http",
+      "server": "84.17.47.146",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_14|1.9MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.17",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_15|1.8MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.19",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_44|806KB/s",
+      "type": "http",
+      "server": "138.199.35.218",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_18|813KB/s|Z001-260618",
+      "type": "http",
+      "server": "193.176.84.33",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_52|763KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.200",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_62|2.9MB/s|R002-260618",
+      "type": "http",
+      "server": "84.17.47.150",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_53|783KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.215",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_54|747KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.212",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_55|752KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.207",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_63|4.5MB/s|R002-260618",
+      "type": "http",
+      "server": "84.17.47.125",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_56|808KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.205",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_20|1.2MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.32",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_21|756KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.31",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_57|837KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.198",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_22|960KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.19",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_60|747KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.199",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_23|949KB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.25",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_24|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.26",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_65|821KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.195",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_66|838KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.213",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_70|6.0MB/s|P002-260618",
+      "type": "http",
+      "server": "84.17.47.148",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_75|2.4MB/s|R002-260618",
+      "type": "http",
+      "server": "51.159.225.196",
+      "port": 23856,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_25|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.40",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_69|749KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.216",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_70|836KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.207",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_71|749KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.205",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_26|1.0MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.29",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_72|731KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.204",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_27|938KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.39",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_73|820KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.196",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_28|1.6MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.23",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇫🇷FR_69|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "103.82.101.43",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇳🇱NL_79|6.9MB/s|P002-260618",
+      "type": "http",
+      "server": "51.159.225.196",
+      "port": 23856,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_29|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.40",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_80|804KB/s|R002-260618",
+      "type": "http",
+      "server": "185.140.209.235",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇳🇱NL_81|1.3MB/s|R002-260618",
+      "type": "http",
+      "server": "103.97.88.154",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇺🇸US_75|709KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.201",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_82|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "185.246.153.42",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇩🇪DE_7|603KB/s|R002-260618",
+      "type": "http",
+      "server": "167.172.172.190",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇲🇽MX_1|436KB/s|R002-260618",
+      "type": "http",
+      "server": "45.134.9.41",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇷🇴RO_31|1.8MB/s",
+      "type": "http",
+      "server": "193.176.84.38",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_32|326KB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.37",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_35|725KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.26",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_36|1.3MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.27",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_94|815KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.197",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_95|654KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.209",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_96|796KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.214",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_97|834KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.206",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_98|790KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.202",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_95|3.2MB/s|R002-260618",
+      "type": "http",
+      "server": "84.17.47.148",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_37|979KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.34",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_102|820KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.211",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_103|738KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.217",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_104|779KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.212",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_97|4.2MB/s|P002-260618",
+      "type": "http",
+      "server": "84.17.47.125",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_106|837KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.215",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_107|217KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.596189.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_38|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.16",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_108|744KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.220",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_115|806KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.198",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇩ID_1|786KB/s|R002-260618",
+      "type": "http",
+      "server": "purecambogiasl.live",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_116|836KB/s|R002-260618",
+      "type": "http",
+      "server": "goedkoopgeluid.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_117|806KB/s|R002-260618",
+      "type": "http",
+      "server": "jgwynphotoarts.pro",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_121|795KB/s|R002-260618",
+      "type": "http",
+      "server": "berniesbodybla.fun",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇫🇷FR_107|468KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.132031.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_122|797KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.200",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_124|325KB/s|Z001-260618",
+      "type": "http",
+      "server": "fan.226278.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_125|825KB/s|R002-260618",
+      "type": "http",
+      "server": "voteshirleysew.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇷🇴RO_39|1.5MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.22",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_126|784KB/s|R002-260618",
+      "type": "http",
+      "server": "efr-marktplatz.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇷🇴RO_40|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.39",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_127|777KB/s|R002-260618",
+      "type": "http",
+      "server": "kimberlymilano.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_130|782KB/s|R002-260618",
+      "type": "http",
+      "server": "crosscards.site",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇮🇩ID_2|844KB/s|R002-260618",
+      "type": "http",
+      "server": "zebpay.site",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_131|772KB/s|R002-260618",
+      "type": "http",
+      "server": "carolinafreigh.fun",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_134|801KB/s|P002-260618",
+      "type": "http",
+      "server": "jewelscollecti.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_163|858KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.213",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇫🇷FR_125|905KB/s|R002-260618",
+      "type": "http",
+      "server": "103.82.101.44",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇺🇸US_167|756KB/s",
+      "type": "http",
+      "server": "138.199.35.213",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_178|787KB/s|R002-260618",
+      "type": "http",
+      "server": "tzoa.fun",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "❓Other_10|458KB/s|R002-260618",
+      "type": "http",
+      "server": "purposebydesig.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_202|781KB/s|P002-260618",
+      "type": "http",
+      "server": "kimberlymilano.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_204|760KB/s|P002-260618",
+      "type": "http",
+      "server": "goedkoopgeluid.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_205|764KB/s|R002-260618",
+      "type": "http",
+      "server": "jgwynphotoarts.pro",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_206|847KB/s|R002-260618",
+      "type": "http",
+      "server": "mmgr.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_210|788KB/s|P002-260618",
+      "type": "http",
+      "server": "efr-marktplatz.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇳🇱NL_118|5.3MB/s|P002-260618",
+      "type": "http",
+      "server": "84.17.47.147",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_18|2.0MB/s|R002-260618",
+      "type": "http",
+      "server": "138.201.56.241",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_119|1.5MB/s|R002-260618",
+      "type": "http",
+      "server": "51.158.243.91",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇵🇱PL_1|2.4MB/s|R002-260618",
+      "type": "http",
+      "server": "151.115.54.133",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇱AL_1|516KB/s|R002-260618",
+      "type": "http",
+      "server": "87.120.103.226",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_19|2.4MB/s|R002-260618",
+      "type": "http",
+      "server": "185.44.107.166",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇷GR_3|467KB/s|R002-260618",
+      "type": "http",
+      "server": "149.22.85.78",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_1|1.5MB/s|R002-260618",
+      "type": "http",
+      "server": "178.237.4.200",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇨🇿CZ_1|791KB/s|R002-260618",
+      "type": "http",
+      "server": "185.216.35.66",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_2|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "93.42.177.250",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇺🇸US_215|778KB/s|P002-260618",
+      "type": "http",
+      "server": "fullmanfirm.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇩🇪DE_20|598KB/s|R002-260618",
+      "type": "http",
+      "server": "149.36.50.1",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_221|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "52.55.81.168",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇫🇷FR_160|3.6MB/s|R002-260618",
+      "type": "http",
+      "server": "141.94.16.4",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_125|3.1MB/s|P002-260618",
+      "type": "http",
+      "server": "51.158.243.91",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_224|785KB/s|P002-260618",
+      "type": "http",
+      "server": "crosscards.site",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇷🇴RO_43|1.0MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.30",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇵🇱PL_2|851KB/s|R002-260618",
+      "type": "http",
+      "server": "37.120.156.18",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_44|1.2MB/s|P002-260618",
+      "type": "http",
+      "server": "185.235.0.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_44|831KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.36",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_242|776KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.204",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_244|814KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.211",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_49|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.38",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_50|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.17",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_250|766KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.219",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_51|1.9MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.20",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_52|1.2MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.21",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "❓Other_13|651KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.210",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_53|1.9MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.27",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_54|954KB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.36",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_255|806KB/s|R002-260618",
+      "type": "http",
+      "server": "fullmanfirm.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_256|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "147.182.216.4",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_263|795KB/s|R002-260618",
+      "type": "http",
+      "server": "jewelscollecti.icu",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_264|755KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.217",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_278|772KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.218",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_291|781KB/s|R002-260618",
+      "type": "http",
+      "server": "webdrone.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇬🇧GB_52|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "185.235.0.66",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_28|1.3MB/s|R002-260618",
+      "type": "http",
+      "server": "87.249.132.97",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇨🇿CZ_3|1.5MB/s|R002-260618",
+      "type": "http",
+      "server": "193.35.104.196",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇺🇸US_292|732KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.207",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_296|824KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.210",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_300|812KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.209",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇭🇰HK_30|161KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.240104.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_144|3.8MB/s",
+      "type": "http",
+      "server": "84.17.47.148",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇺AU_2|442KB/s|R002-260618",
+      "type": "http",
+      "server": "103.62.50.130",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_320|416KB/s|R002-260618",
+      "type": "http",
+      "server": "162.243.146.243",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_322|772KB/s|P002-260618",
+      "type": "http",
+      "server": "purecambogiasl.live",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_324|341KB/s|R002-260618",
+      "type": "http",
+      "server": "149.88.21.129",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_348|789KB/s",
+      "type": "http",
+      "server": "138.199.35.205",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇹🇼TW_20|98KB/s",
+      "type": "http",
+      "server": "twmoon1-cdn-route.couldflare-cdn.com",
+      "port": 1443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_60|1.3MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.34",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_361|125KB/s|R002-260618",
+      "type": "http",
+      "server": "38.28.193.188",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_156|6.0MB/s|R002-260618",
+      "type": "http",
+      "server": "84.17.47.149",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_362|792KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.208",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_64|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "185.235.0.2",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇱🇻LV_12|650KB/s|R002-260618",
+      "type": "http",
+      "server": "109.248.147.66",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_65|989KB/s|R002-260618",
+      "type": "http",
+      "server": "212.102.63.61",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇧🇬BG_4|602KB/s|R002-260618",
+      "type": "http",
+      "server": "185.94.192.210",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_366|815KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.220",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇧🇪BE_1|325KB/s|R002-260618",
+      "type": "http",
+      "server": "146.70.123.98",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_3|1.1MB/s|R002-260618",
+      "type": "http",
+      "server": "91.243.118.217",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇬🇧GB_72|812KB/s|R002-260618",
+      "type": "http",
+      "server": "37.120.233.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_36|1.9MB/s|R002-260618",
+      "type": "http",
+      "server": "141.17.83.78",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇳🇱NL_169|846KB/s|P002-260618",
+      "type": "http",
+      "server": "149.36.51.129",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_371|810KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.202",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_39|4.6MB/s|P002-260618",
+      "type": "http",
+      "server": "138.201.56.241",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
     {
       "name": "🇮🇹IT_7|1.9MB/s|A004-260618",
       "type": "ss",
@@ -12,6 +1356,38 @@
       "port": 9039,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "🇩🇪DE_46|1.6MB/s|R002-260618",
+      "type": "http",
+      "server": "141.17.83.73",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇺🇸US_381|745KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.220",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇱🇹LT_5|2.4MB/s|R002-260618",
+      "type": "http",
+      "server": "212.24.108.20",
+      "port": 11920,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇳🇱NL_209|5.2MB/s|R002-260618",
+      "type": "http",
+      "server": "51.159.225.196",
+      "port": 23856,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
       "name": "🇱🇹LT_6|2.0MB/s|A004-260618",
@@ -22,28 +1398,556 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇩🇴DO_1|610KB/s|R002-260618",
+      "name": "🇭🇰HK_52|161KB/s|R002-260618",
       "type": "http",
-      "server": "154.88.164.160",
-      "port": 999,
+      "server": "fan.240104.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_68|1.6MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.16",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_394|742KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.216",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_395|345KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.596189.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_69|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "193.176.84.33",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇵🇱PL_11|2.8MB/s|P002-260618",
+      "type": "http",
+      "server": "151.115.54.133",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇨🇭CH_1|647KB/s",
+      "type": "http",
+      "server": "149.88.27.46",
+      "port": 9443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_15|1.0MB/s|P002-260618",
+      "type": "http",
+      "server": "178.237.4.200",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇦🇹AT_5|487KB/s|R002-260618",
+      "type": "http",
+      "server": "146.70.244.18",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇸🇪SE_1|1.4MB/s|R002-260618",
+      "type": "http",
+      "server": "146.70.242.146",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_165|1011KB/s|R002-260618",
+      "type": "http",
+      "server": "37.120.233.50",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇪🇸ES_7|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "130.195.250.18",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇪🇸ES_8|894KB/s|R002-260618",
+      "type": "http",
+      "server": "130.195.250.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_78|1.2MB/s",
+      "type": "http",
+      "server": "193.176.84.40",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_418|724KB/s",
+      "type": "http",
+      "server": "138.199.35.208",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_419|768KB/s",
+      "type": "http",
+      "server": "138.199.35.196",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_237|7.0MB/s|P002-260618",
+      "type": "http",
+      "server": "84.17.47.146",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_420|776KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.197",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_421|812KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.210",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_80|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.30",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_81|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.29",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_239|1.2MB/s|R002-260618",
+      "type": "http",
+      "server": "185.246.153.28",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002\u0016"
+    },
+    {
+      "name": "🇺🇸US_424|820KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.195",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_425|689KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.211",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇸🇨SC_1|80KB/s|R002-260618",
+      "type": "http",
+      "server": "hk40.240104.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_427|443KB/s|R002-260618",
+      "type": "http",
+      "server": "209.148.53.153",
+      "port": 8090,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇺🇸US_430|738KB/s|P002-260618",
+      "type": "http",
+      "server": "mmgr.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇬🇧GB_172|1.0MB/s|R002-260618",
+      "type": "http",
+      "server": "37.120.233.18",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇱🇻LV_23|790KB/s|P002-260618",
+      "type": "http",
+      "server": "109.248.149.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_436|710KB/s",
+      "type": "http",
+      "server": "138.199.35.199",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_437|648KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.216",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_438|815KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.206",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_439|327KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.365747.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇸🇪SE_3|842KB/s|R002-260618",
+      "type": "http",
+      "server": "79.142.77.63",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇷GR_6|601KB/s|R002-260618",
+      "type": "http",
+      "server": "149.22.85.65",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_443|810KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.202",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_453|730KB/s",
+      "type": "http",
+      "server": "138.199.35.219",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇫🇷FR_460|628KB/s|R002-260618",
+      "type": "http",
+      "server": "149.102.245.65",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇸🇬SG_70|681KB/s|R002-260618",
+      "type": "http",
+      "server": "146.70.29.45",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "❓Other_36|984KB/s|R002-260618",
+      "type": "http",
+      "server": "149.36.50.157",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_18|1.1MB/s|R002-260618",
+      "type": "http",
+      "server": "109.116.41.154",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇩🇪DE_78|2.0MB/s|P002-260618",
+      "type": "http",
+      "server": "141.17.83.78",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇪🇨EC_3|410KB/s|P002-260618",
+      "type": "http",
+      "server": "38.165.231.71",
+      "port": 9443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_468|784KB/s",
+      "type": "http",
+      "server": "138.199.35.200",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_469|832KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.206",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇯🇵JP_68|156KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.571589.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇺AU_3|374KB/s|R002-260618",
+      "type": "http",
+      "server": "159.13.44.228",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇺🇸US_473|462KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.212",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇸RS_1|889KB/s|P002-260618",
+      "type": "http",
+      "server": "146.70.221.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇸🇪SE_4|587KB/s|R002-260618",
+      "type": "http",
+      "server": "149.50.216.65",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇹AT_7|1.0MB/s|P002-260618",
+      "type": "http",
+      "server": "146.70.244.2",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇨🇭CH_2|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "31.7.62.50",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇯🇵JP_71|192KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.571589.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_482|834KB/s|R002-260618",
+      "type": "http",
+      "server": "purecambogiasl.live",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇧🇪BE_4|516KB/s|R002-260618",
+      "type": "http",
+      "server": "146.70.176.242",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇷🇴RO_84|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "193.176.84.37",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_85|127KB/s|R002-260618",
+      "type": "http",
+      "server": "fan.973511.xyz",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_487|521KB/s|R002-260618",
+      "type": "http",
+      "server": "216.107.139.82",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇳🇱NL_252|3.3MB/s|P002-260618",
+      "type": "http",
+      "server": "5.255.118.82",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_262|257KB/s|B007-260618",
+      "type": "ss",
+      "server": "188.116.23.244",
+      "port": 8388,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇨🇴CO_4|69KB/s|R002-260618",
+      "name": "🇩🇰DK_1|974KB/s|R002-260618",
       "type": "http",
-      "server": "177.93.57.84",
-      "port": 12345,
+      "server": "185.245.84.50",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
-      "name": "🇨🇱CL_1|385KB/s|R002-260618",
+      "name": "🇮🇪IE_1|1.6MB/s|P002-260618",
       "type": "http",
-      "server": "190.93.229.1",
-      "port": 18080,
+      "server": "149.88.96.1",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_501|794KB/s|P002-260618",
+      "type": "http",
+      "server": "webdrone.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_502|788KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.219",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇨🇭CH_4|1.0MB/s|R002-260618",
+      "type": "http",
+      "server": "37.120.213.210",
+      "port": 9443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_505|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "52.55.81.168",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇵🇹PT_1|1.1MB/s|P002-260618",
+      "type": "http",
+      "server": "149.22.86.14",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇱AL_3|573KB/s|P002-260618",
+      "type": "http",
+      "server": "87.120.103.242",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_204|1.5MB/s|R002-260618",
+      "type": "http",
+      "server": "5.101.149.245",
+      "port": 8443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
       "name": "🇯🇵JP_77|408KB/s|A004-260618",
@@ -54,12 +1958,124 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇨🇱CL_2|391KB/s|R002-260618",
+      "name": "🇺🇸US_522|747KB/s|K001-260618",
       "type": "http",
-      "server": "190.93.229.49",
-      "port": 18080,
+      "server": "kimberlymilano.icu",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇩ID_9|825KB/s|P002-260618",
+      "type": "http",
+      "server": "zebpay.site",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇬🇧GB_229|1.0MB/s|P002-260618",
+      "type": "http",
+      "server": "212.102.63.31",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_527|820KB/s|R002-260618",
+      "type": "http",
+      "server": "efr-marktplatz.club",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇦🇺AU_5|424KB/s|R002-260618",
+      "type": "http",
+      "server": "159.13.44.228",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇳🇱NL_274|2.5MB/s|R002-260618",
+      "type": "http",
+      "server": "157.22.183.72",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error [Errno 104] Connection reset by peer>"
+    },
+    {
+      "name": "🇺🇸US_540|727KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.201",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇭🇺HU_1|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "146.70.203.18",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_548|788KB/s|P002-260618",
+      "type": "http",
+      "server": "berniesbodybla.fun",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇺🇸US_549|790KB/s|P002-260618",
+      "type": "http",
+      "server": "tzoa.fun",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇸🇪SE_6|670KB/s|P002-260618",
+      "type": "http",
+      "server": "146.70.242.130",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_550|714KB/s|P002-260618",
+      "type": "http",
+      "server": "138.199.35.215",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇵🇱PL_18|775KB/s|P002-260618",
+      "type": "http",
+      "server": "37.120.156.34",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_25|987KB/s|P002-260618",
+      "type": "http",
+      "server": "185.183.105.130",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_564|768KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.195",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
       "name": "🇺🇸US_565|248KB/s|R002-260618",
@@ -67,23 +2083,103 @@
       "server": "104.154.186.48",
       "port": 80,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error timed out>"
     },
     {
-      "name": "❓Other_52|152KB/s|R002-260618",
+      "name": "🇺🇸US_577|712KB/s|P002-260618",
       "type": "http",
-      "server": "185.32.4.210",
-      "port": 8090,
+      "server": "138.199.35.209",
+      "port": 9002,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
-      "name": "🇲🇽MX_6|103KB/s|R002-260618",
+      "name": "🇺🇸US_578|750KB/s|P002-260618",
       "type": "http",
-      "server": "187.249.120.139",
-      "port": 999,
+      "server": "carolinafreigh.fun",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
+      "reason": "URLError: <urlopen error timed out>"
+    },
+    {
+      "name": "🇮🇹IT_27|1.3MB/s|P002-260618",
+      "type": "http",
+      "server": "185.183.105.146",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇪🇸ES_15|971KB/s|R002-260618",
+      "type": "http",
+      "server": "82.102.17.178",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_284|2.8MB/s|R002-260618",
+      "type": "http",
+      "server": "84.17.47.150",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇬🇧GB_279|936KB/s|R002-260618",
+      "type": "http",
+      "server": "185.235.0.98",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇩🇪DE_117|793KB/s|R002-260618",
+      "type": "http",
+      "server": "149.36.50.129",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇮🇹IT_28|1.1MB/s|R002-260618",
+      "type": "http",
+      "server": "93.42.177.250",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "BadStatusLine: \u0015\u0003\u0003\u0000\u0002\u0002P"
+    },
+    {
+      "name": "🇺🇸US_615|601KB/s",
+      "type": "http",
+      "server": "38.95.111.226",
+      "port": 9443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_288|3.3MB/s|K001-260618",
+      "type": "http",
+      "server": "82.196.9.7",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇺🇸US_668|775KB/s|R002-260618",
+      "type": "http",
+      "server": "138.199.35.197",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
+    },
+    {
+      "name": "🇳🇱NL_296|260KB/s|R002-260618",
+      "type": "http",
+      "server": "51.158.243.91",
+      "port": 443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
       "name": "🇦🇪AE_38|405KB/s|T001-260618",
@@ -94,20 +2190,20 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇵🇸PS_2|554KB/s|R002-260618",
-      "type": "http",
-      "server": "188.161.150.217",
-      "port": 9090,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
       "name": "🇫🇮FI_10|558KB/s|B007-260618",
       "type": "vless",
       "server": "tunnn.qarmiko.ir",
       "port": 3456,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "gaierror: [Errno -2] Name or service not known"
+    },
+    {
+      "name": "🇷🇴RO_98|1.8MB/s",
+      "type": "http",
+      "server": "193.176.84.27",
+      "port": 9002,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "URLError: <urlopen error Remote end closed connection without response>"
     },
     {
       "name": "vless-975562418",
@@ -130,14 +2226,6 @@
       "type": "vless",
       "server": "78.129.221.66",
       "port": 446,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-1140800278",
-      "type": "vless",
-      "server": "213.165.47.248",
-      "port": 8443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
     },
@@ -2010,6 +4098,14 @@
       "type": "vmess",
       "server": "104.20.77.131",
       "port": 443,
+      "source": "anaer/Sub",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "美国 415",
+      "type": "vmess",
+      "server": "129.146.143.80",
+      "port": 48111,
       "source": "anaer/Sub",
       "reason": "TimeoutError: timed out"
     },
@@ -8470,14 +10566,6 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇨🇳 CN 394 → tg@nicevpn123",
-      "type": "ss",
-      "server": "k9.b99.buzz",
-      "port": 48009,
-      "source": "NiceVPN123/NiceVPN",
-      "reason": "OSError: [Errno 101] Network is unreachable"
-    },
-    {
       "name": "🇨🇳 CN 395 → tg@nicevpn123",
       "type": "vmess",
       "server": "free.2apzhfa.xyz",
@@ -12774,6 +14862,14 @@
       "reason": "gaierror: [Errno -2] Name or service not known"
     },
     {
+      "name": "🇷🇺 RU 13 → tg@nicevpn123",
+      "type": "ss",
+      "server": "5.188.181.201",
+      "port": 9041,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
       "name": "🇷🇺 RU 14 → tg@nicevpn123",
       "type": "vmess",
       "server": "nl-full.privateip.net",
@@ -12818,6 +14914,14 @@
       "type": "vmess",
       "server": "45.87.155.70",
       "port": 80,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "🇷🇺 RU 23 → tg@nicevpn123",
+      "type": "ss",
+      "server": "5.188.181.201",
+      "port": 9042,
       "source": "NiceVPN123/NiceVPN",
       "reason": "TimeoutError: timed out"
     },
