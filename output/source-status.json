@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-09-06T21:19:04.218754+00:00",
+  "generated_at": "2026-09-06T23:51:20.447882+00:00",
   "proxy_count": 1000,
-  "checked": 5721,
-  "unavailable_count": 2416,
-  "kept_on_refused": 354,
+  "checked": 5726,
+  "unavailable_count": 2404,
+  "kept_on_refused": 358,
   "regions": {
-    "港台": 17,
+    "港台": 15,
     "东南亚": 12,
     "日韩": 11,
     "美加": 100,
     "澳大利亚": 1,
     "法国": 100,
-    "英国": 13,
-    "德国": 35,
+    "英国": 14,
+    "德国": 34,
     "荷兰": 67,
     "罗马尼亚": 0,
     "西班牙": 1,
-    "其他": 643
+    "其他": 645
   },
   "sources": [
     {
@@ -39,9 +39,9 @@
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1862,
-      "added": 1862,
-      "unavailable": 7
+      "received": 1861,
+      "added": 1861,
+      "unavailable": 2
     },
     {
       "name": "awesome-vpn/awesome-vpn",
@@ -73,7 +73,7 @@
       "ok": true,
       "received": 1416,
       "added": 1416,
-      "unavailable": 416
+      "unavailable": 410
     },
     {
       "name": "ermaozi01/free_clash_vpn",
@@ -87,8 +87,8 @@
       "name": "peasoft/NoMoreWalls",
       "url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
       "ok": true,
-      "received": 26,
-      "added": 26,
+      "received": 30,
+      "added": 30,
       "unavailable": 7
     },
     {
@@ -97,14 +97,14 @@
       "ok": true,
       "received": 3646,
       "added": 3646,
-      "unavailable": 1826
+      "unavailable": 1825
     },
     {
       "name": "chengaopan/AutoMergePublicNodes",
       "url": "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
       "ok": true,
-      "received": 26,
-      "added": 26,
+      "received": 30,
+      "added": 30,
       "unavailable": 0
     }
   ]
