@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import socket
 import sys
 import urllib.request
@@ -20,6 +21,25 @@ MAX_NODES = int(os.getenv("MAX_NODES", "1000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
 CHECK_TIMEOUT = int(os.getenv("CHECK_TIMEOUT", "5"))
 CHECK_WORKERS = int(os.getenv("CHECK_WORKERS", "100"))
+# Region caps mirror the proxy groups in clash-verge-local.yaml; filters are copied verbatim
+REGION_CAP = int(os.getenv("REGION_CAP", "100"))
+REGION_FILTERS: list[tuple[str, re.Pattern]] = [
+    ("港台", re.compile(r"(?i)港|🇭🇰|香港|HKG|Hong|(?:^|[^a-z])HK(?:[^a-z]|$)|台|🇨🇳|台湾|新北|TPE|TWN|Taiwan|(?:^|[^a-z])TW(?:[^a-z]|$)")),
+    ("东南亚", re.compile(r"(?i)坡|🇸🇬|新加坡|狮城|SGP|Singapore|(?:^|[^a-z])SG(?:[^a-z]|$)|菲律|🇵🇭|马尼拉|PHL|Philippine|(?:^|[^a-z])PH(?:[^a-z]|$)|越南|🇻🇳|河内|胡志明|VNM|Vietnam|(?:^|[^a-z])VN(?:[^a-z]|$)|马来|🇲🇾|吉隆坡|MYS|Malaysia|(?:^|[^a-z])MY(?:[^a-z]|$)|泰国|🇹🇭|曼谷|THA|Thailand|(?:^|[^a-z])TH(?:[^a-z]|$)|印尼|印度尼|🇮🇩|雅加达|IDN|Indonesia|(?:^|[^a-z])ID(?:[^a-z]|$)|柬埔寨|🇰🇭|金边|老挝|缅甸|🇲🇲|文莱|🇧🇳")),
+    ("日韩", re.compile(r"(?i)🇯🇵|日本|东京|大阪|JPN|Japan|(?:^|[^a-z])JP(?:[^a-z]|$)|韩|🇰🇷|首尔|Korea|KOR|(?:^|[^a-z])KR(?:[^a-z]|$)")),
+    ("美加", re.compile(r"(?i)美|🇺🇸|美国|USA|States|American|洛杉矶|圣何塞|西雅图|凤凰城|达拉斯|芝加哥|Los Angeles|San Jose|Seattle|Phoenix|Dallas|Chicago|(?:^|[^a-z])US(?:[^a-z]|$)|加拿大|🇨🇦|枫叶|Canad|蒙特利尔|多伦多|温哥华|Toronto|Montreal|Vancouver|(?:^|[^a-z])CA(?:[^a-z]|$)")),
+    ("澳大利亚", re.compile(r"(?i)澳大利亚|澳洲|🇦🇺|AUS|Australia|Aussie|悉尼|Sydney|(?:^|[^a-z])AU(?:[^a-z]|$)")),
+    ("法国", re.compile(r"(?i)法|🇫🇷|法国|巴黎|FRA|France|(?:^|[^a-z])FR(?:[^a-z]|$)")),
+    ("英国", re.compile(r"(?i)英|🇬🇧|英国|伦敦|GBR|United Kingdom|(?:^|[^a-z])GB(?:[^a-z]|$)|(?:^|[^a-z])UK(?:[^a-z]|$)")),
+    ("德国", re.compile(r"(?i)德|🇩🇪|德国|法兰克福|DEU|German|(?:^|[^a-z])DE(?:[^a-z]|$)")),
+    ("荷兰", re.compile(r"(?i)荷兰|阿姆斯特丹|🇳🇱|NLD|Netherland|(?:^|[^a-z])NL(?:[^a-z]|$)")),
+    ("罗马尼亚", re.compile(r"(?i)罗马尼亚|🇷🇴|ROU|(?:^|[^a-z])RO(?:[^a-z]|$)")),
+    ("西班牙", re.compile(r"(?i)西班牙|🇪🇸|马德里|巴塞罗那|Madrid|Barcelona|ESP|Spa(?:in|nish)|(?:^|[^a-z])ES(?:[^a-z]|$)")),
+]
+
+
+def region_of(name: str) -> str:
+    return next((region for region, pattern in REGION_FILTERS if pattern.search(name)), "其他")
 
 
 def fetch(url: str) -> dict:
@@ -80,8 +100,8 @@ def main() -> int:
             before = len(collected)
             for proxy in candidates:
                 if isinstance(proxy, dict) and proxy.get("name") and proxy.get("type"):
-                    if str(proxy["type"]).strip().lower() == "http":
-                        continue
+                    # if str(proxy["type"]).strip().lower() == "http":
+                    #     continue
                     entry = dict(proxy)
                     entry["_source"] = name
                     collected.append(entry)
@@ -161,10 +181,23 @@ def main() -> int:
     if not proxies:
         raise RuntimeError("all upstream sources failed, or every node failed the availability check")
 
-    if len(proxies) > MAX_NODES:
-        with_pipe = [p for p in proxies if "|" in p["name"]]
-        without_pipe = [p for p in proxies if "|" not in p["name"]]
-        proxies = (with_pipe + without_pipe)[:MAX_NODES]
+    # Keep at most REGION_CAP nodes per region (mirrors clash-verge-local.yaml groups),
+    # then cap the total at MAX_NODES; uncategorized nodes ("其他") have no region cap.
+    with_pipe = [p for p in proxies if "|" in p["name"]]
+    without_pipe = [p for p in proxies if "|" not in p["name"]]
+    region_counts: dict[str, int] = {}
+    selected: list[dict] = []
+    for proxy in with_pipe + without_pipe:
+        region = region_of(proxy["name"])
+        if region != "其他" and region_counts.get(region, 0) >= REGION_CAP:
+            continue
+        region_counts[region] = region_counts.get(region, 0) + 1
+        selected.append(proxy)
+        if len(selected) >= MAX_NODES:
+            break
+    proxies = selected
+    region_stats = {name: region_counts.get(name, 0) for name, _ in REGION_FILTERS}
+    region_stats["其他"] = region_counts.get("其他", 0)
     for proxy in proxies:
         proxy.pop("_source", None)
     names = [proxy["name"] for proxy in proxies]
@@ -187,6 +220,7 @@ def main() -> int:
         "checked": len(deduped),
         "unavailable_count": len(unavailable_records),
         "kept_on_refused": kept_on_refused,
+        "regions": region_stats,
         "sources": status,
     }
     STATUS.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
