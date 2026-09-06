@@ -49,6 +49,8 @@ def main() -> int:
             before = len(collected)
             for proxy in candidates:
                 if isinstance(proxy, dict) and proxy.get("name") and proxy.get("type"):
+                    if str(proxy["type"]).strip().lower() == "http":
+                        continue
                     collected.append(dict(proxy))
             status.append({"name": name, "url": url, "ok": True, "received": len(candidates), "added": len(collected) - before})
         except Exception as exc:  # one broken upstream must not block the other sources
