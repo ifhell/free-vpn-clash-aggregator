@@ -1,22 +1,14 @@
 {
-  "generated_at": "2026-09-06T06:37:16.615880+00:00",
-  "checked": 6959,
-  "available": 4631,
-  "unavailable": 2328,
-  "kept_on_refused": 360,
+  "generated_at": "2026-09-06T07:35:41.465741+00:00",
+  "checked": 6942,
+  "available": 4636,
+  "unavailable": 2306,
+  "kept_on_refused": 361,
   "nodes": [
     {
       "name": "🇩🇪DE_32|6.2MB/s|R002-260618",
       "type": "trojan",
       "server": "dggg.wsone.icu",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇦🇪AE_28|178KB/s|A004-260618",
-      "type": "vless",
-      "server": "151.243.182.249",
       "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "TimeoutError: timed out"
@@ -34,6 +26,14 @@
       "type": "vless",
       "server": "213.165.47.248",
       "port": 8443,
+      "source": "cbusifabcap/daily_free_vpn",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "🇩🇪DE_124|344KB/s|S004-260618",
+      "type": "vless",
+      "server": "185.96.80.147",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "TimeoutError: timed out"
     },
@@ -62,130 +62,10 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "trojan-122310",
-      "type": "trojan",
-      "server": "aa.ccmusic.jp",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-1142051994",
+      "name": "vless-928823648",
       "type": "vless",
-      "server": "54.180.101.47",
-      "port": 8686,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-1142894162",
-      "type": "vless",
-      "server": "129.146.187.36",
-      "port": 50159,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-470978115",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-746156821",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-537790432",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-706360303",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-470978015",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-708981563",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-468882945",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-706360349",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-706360332",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-537790435",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-468882938",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-537790436",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-474863694",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
+      "server": "78.129.221.66",
+      "port": 446,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
     },
@@ -198,59 +78,11 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "vless-470975931",
+      "name": "🇩🇪 Germany/Frankfurt am Main [GH:Surfboardv2ra]",
       "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-468882932",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-474927684",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-663847490",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-468882947",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-474886668",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-708981564",
-      "type": "vless",
-      "server": "31.58.50.200",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
+      "server": "88.216.190.205",
+      "port": 443,
+      "source": "awesome-vpn/awesome-vpn",
       "reason": "TimeoutError: timed out"
     },
     {
@@ -1286,36 +1118,12 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "新加坡 008",
-      "type": "vmess",
-      "server": "st-1.dnspro.icu",
-      "port": 9111,
-      "source": "anaer/Sub",
-      "reason": "OSError: [Errno 101] Network is unreachable"
-    },
-    {
-      "name": "新加坡 009",
-      "type": "vmess",
-      "server": "st-2.dnspro.icu",
-      "port": 5100,
-      "source": "anaer/Sub",
-      "reason": "OSError: [Errno 101] Network is unreachable"
-    },
-    {
       "name": "中国 017",
       "type": "vmess",
       "server": "47.243.187.171",
       "port": 60808,
       "source": "anaer/Sub",
       "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "新加坡 010",
-      "type": "vmess",
-      "server": "sh-cn-1.dnspro.icu",
-      "port": 20025,
-      "source": "anaer/Sub",
-      "reason": "OSError: [Errno 101] Network is unreachable"
     },
     {
       "name": "中国 018",
@@ -1659,7 +1467,7 @@
       "server": "f1f3227.v1.glados-config.net",
       "port": 3331,
       "source": "anaer/Sub",
-      "reason": "gaierror: [Errno -2] Name or service not known"
+      "reason": "TimeoutError: timed out"
     },
     {
       "name": "中国 041",
@@ -2134,6 +1942,14 @@
       "reason": "TimeoutError: timed out"
     },
     {
+      "name": "美国 415",
+      "type": "vmess",
+      "server": "129.146.143.80",
+      "port": 48111,
+      "source": "anaer/Sub",
+      "reason": "TimeoutError: timed out"
+    },
+    {
       "name": "中国 064",
       "type": "vmess",
       "server": "129.226.157.220",
@@ -2226,14 +2042,6 @@
       "type": "vless",
       "server": "194.76.173.6",
       "port": 2053,
-      "source": "anaer/Sub",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "巴西 016",
-      "type": "vless",
-      "server": "201.51.8.235",
-      "port": 2200,
       "source": "anaer/Sub",
       "reason": "TimeoutError: timed out"
     },
@@ -2662,14 +2470,6 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "罗马尼亚 004",
-      "type": "vless",
-      "server": "93.114.98.84",
-      "port": 53147,
-      "source": "anaer/Sub",
-      "reason": "TimeoutError: timed out"
-    },
-    {
       "name": "巴西 031",
       "type": "vless",
       "server": "201.24.49.233",
@@ -2958,14 +2758,6 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "美国 670",
-      "type": "vless",
-      "server": "204.216.216.23",
-      "port": 10086,
-      "source": "anaer/Sub",
-      "reason": "TimeoutError: timed out"
-    },
-    {
       "name": "西班牙 006",
       "type": "vless",
       "server": "212.34.140.205",
@@ -3234,6 +3026,14 @@
       "type": "vless",
       "server": "144.126.195.184",
       "port": 443,
+      "source": "anaer/Sub",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "伊朗 039",
+      "type": "vless",
+      "server": "81.12.54.134",
+      "port": 5050,
       "source": "anaer/Sub",
       "reason": "TimeoutError: timed out"
     },
@@ -8614,6 +8414,14 @@
       "reason": "TimeoutError: timed out"
     },
     {
+      "name": "🇨🇳 CN 394 → tg@nicevpn123",
+      "type": "ss",
+      "server": "k9.b99.buzz",
+      "port": 48009,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "OSError: [Errno 101] Network is unreachable"
+    },
+    {
       "name": "🇨🇳 CN 395 → tg@nicevpn123",
       "type": "vmess",
       "server": "free.2apzhfa.xyz",
@@ -11966,6 +11774,14 @@
       "reason": "TimeoutError: timed out"
     },
     {
+      "name": "🇯🇵 JP 49 → tg@nicevpn123",
+      "type": "vmess",
+      "server": "lotn9-g03.jp06-7c5a-vm0.entry.fr0307a.art",
+      "port": 28785,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
       "name": "🇯🇵 JP 5 → tg@nicevpn123",
       "type": "vmess",
       "server": "jp5g.xn--vhq70hxyat50h6wk.com",
@@ -12908,14 +12724,6 @@
       "port": 30002,
       "source": "NiceVPN123/NiceVPN",
       "reason": "gaierror: [Errno -2] Name or service not known"
-    },
-    {
-      "name": "🇷🇺 RU 13 → tg@nicevpn123",
-      "type": "ss",
-      "server": "5.188.181.201",
-      "port": 9041,
-      "source": "NiceVPN123/NiceVPN",
-      "reason": "TimeoutError: timed out"
     },
     {
       "name": "🇷🇺 RU 14 → tg@nicevpn123",
@@ -16398,6 +16206,14 @@
       "reason": "gaierror: [Errno -2] Name or service not known"
     },
     {
+      "name": "🇺🇸 US 213 → tg@nicevpn123",
+      "type": "vmess",
+      "server": "103.79.79.57",
+      "port": 31231,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
       "name": "🇺🇸 US 214 → tg@nicevpn123",
       "type": "ss",
       "server": "38.121.43.71",
@@ -17002,6 +16818,14 @@
       "type": "ss",
       "server": "38.75.137.93",
       "port": 8119,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "🇺🇸 US 398 → tg@nicevpn123",
+      "type": "ss",
+      "server": "38.110.1.105",
+      "port": 5003,
       "source": "NiceVPN123/NiceVPN",
       "reason": "TimeoutError: timed out"
     },
