@@ -1,6 +1,6 @@
 # Free VPN Clash Aggregator
 
-这个仓库把 10 个公开的 GitHub Clash/V2Ray 节点项目合并为一个 Clash Meta 配置，失败的上游会被隔离，节点会去重，GitHub Actions 每小时重新抓取并提交生成文件。
+这个仓库把 11 个公开的 GitHub Clash/V2Ray 节点项目合并为一个 Clash Meta 配置，失败的上游会被隔离，节点会去重，GitHub Actions 每小时重新抓取并提交生成文件。
 
 ## Clash Verge 导入
 
@@ -20,7 +20,7 @@ python -m venv .venv
 .venv/Scripts/python scripts/update.py
 ```
 
-可用 `MAX_NODES=3000` 控制输出节点数量上限。节点越多，Clash Verge 启动和测速越慢，如需调整请自行权衡。
+可用 `MAX_NODES=1000` 控制输出节点数量上限。节点越多，Clash Verge 启动和测速越慢，如需调整请自行权衡。
 
 ## 安全与合规
 
@@ -28,4 +28,4 @@ python -m venv .venv
 
 ## 上游项目
 
-见 [`sources.yaml`](sources.yaml)。来源包括 PuddinCat/BestClash、Au1rxx/free-vpn-subscriptions、awesome-vpn/awesome-vpn、vxiaov/free_proxies、ermaozi/get_subscribe、anaer/Sub、ermaozi01/free_clash_vpn、peasoft/NoMoreWalls、NiceVPN123/NiceVPN、chengaopan/AutoMergePublicNodes。
+见 [`sources.yaml`](sources.yaml)。来源包括 PuddinCat/BestClash、Au1rxx/free-vpn-subscriptions、awesome-vpn/awesome-vpn、vxiaov/free_proxies、ermaozi/get_subscribe、anaer/Sub、ermaozi01/free_clash_vpn、peasoft/NoMoreWalls、NiceVPN123/NiceVPN、chengaopan/AutoMergePublicNodes、cbusifabcap/daily_free_vpn。
