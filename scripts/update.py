@@ -37,8 +37,15 @@ def fingerprint(proxy: dict) -> tuple:
     return tuple(str(proxy.get(field, "")) for field in fields)
 
 
+UDP_TYPES = {"hysteria", "hysteria2", "tuic", "wireguard"}
+
+
 def check_proxy(proxy: dict) -> tuple[bool, str]:
-    # TCP-level reachability only: proves the port is open, not a full protocol handshake
+    # TCP-level reachability only: proves the port is open, not a full protocol handshake.
+    # QUIC/UDP transports never accept TCP connections, so probing them would kill live nodes.
+    proxy_type = str(proxy.get("type", "")).strip().lower()
+    if proxy_type in UDP_TYPES:
+        return True, ""
     server = str(proxy.get("server", "")).strip()
     try:
         port = int(proxy.get("port", 0))
