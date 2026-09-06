@@ -1,163 +1,35 @@
 {
-  "generated_at": "2026-09-06T05:48:37.714901+00:00",
-  "checked": 7974,
-  "available": 5176,
-  "unavailable": 2798,
+  "generated_at": "2026-09-06T06:12:43.168949+00:00",
+  "checked": 7022,
+  "available": 4318,
+  "unavailable": 2704,
   "nodes": [
     {
-      "name": "🇩🇪DE_13|4.5MB/s|B007-260618",
-      "type": "vmess",
-      "server": "deapp.jisuyun.top",
-      "port": 2053,
+      "name": "🇩🇪DE_32|6.2MB/s|R002-260618",
+      "type": "trojan",
+      "server": "dggg.wsone.icu",
+      "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇬🇧GB_36|153KB/s|A004-260618",
-      "type": "vless",
-      "server": "45.144.28.39",
-      "port": 2096,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇰🇷KR_14|578KB/s|B007-260618",
-      "type": "vmess",
-      "server": "132.145.80.230",
-      "port": 80,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "🇹🇼TW_17|519KB/s|A004-260618",
+      "name": "🇹🇼TW_24|549KB/s|A003-260618",
       "type": "ss",
-      "server": "36.224.151.80",
+      "server": "r3mrcg001286ek2.cybervena.com",
       "port": 50099,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
-      "name": "🇮🇹IT_11|465KB/s",
+      "name": "🇧🇬BG_12|2.5MB/s|V009-260618",
       "type": "vless",
-      "server": "204.216.216.23",
-      "port": 10086,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "❓Other_30|272KB/s|A004-260618",
-      "type": "vless",
-      "server": "usejh2.neobo-tooth.ru",
-      "port": 2096,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇩🇪DE_92|4.0MB/s|V002-260618",
-      "type": "vless",
-      "server": "116.202.19.249",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇺🇸US_470|333KB/s|A004-260618",
-      "type": "vless",
-      "server": "129.153.71.28",
-      "port": 28863,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇵🇱PL_31|332KB/s|A004-260618",
-      "type": "vless",
-      "server": "151.243.182.249",
+      "server": "192.145.31.5",
       "port": 443,
       "source": "cbusifabcap/daily_free_vpn",
       "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
-      "name": "🇮🇳IN_4|791KB/s|A004-260618",
-      "type": "trojan",
-      "server": "hyfuuf6.wsone.icu",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇱🇹LT_10|2.0MB/s|C002-260622",
-      "type": "ss",
-      "server": "195.238.126.84",
-      "port": 9039,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇬🇧GB_238|365KB/s|F003-260618",
-      "type": "vless",
-      "server": "129.151.64.169",
-      "port": 31867,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇹🇭TH_3|587KB/s|R002-260618",
-      "type": "vmess",
-      "server": "119.46.51.45",
-      "port": 37515,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇺🇸US_623|213KB/s|M003-260806",
-      "type": "vless",
-      "server": "213.165.47.248",
-      "port": 8443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇩🇪DE_152|1.7MB/s|A004-260618",
-      "type": "vmess",
-      "server": "104.105.6.167",
-      "port": 2053,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇳🇱NL_313|620KB/s|R002-260618",
-      "type": "socks5",
-      "server": "5.255.117.250",
-      "port": 1080,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇩🇪DE_157|3.0MB/s|B007-260618",
-      "type": "vless",
-      "server": "ww6.levikogjgfdd.ir",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇺🇸US_832|169KB/s|M003-260806",
-      "type": "vmess",
-      "server": "82.139.242.5",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇩🇪DE_185|2.6MB/s|B007-260618",
-      "type": "vless",
-      "server": "tp.paydar.site",
-      "port": 443,
-      "source": "cbusifabcap/daily_free_vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇩🇪DE_194|308KB/s|B007-260618",
+      "name": "🇩🇪DE_141|517KB/s|B007-260618",
       "type": "vless",
       "server": "80.244.13.155",
       "port": 443,
@@ -165,90 +37,18 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "hysteria2-307174592",
-      "type": "hysteria2",
-      "server": "vpn-tw-002.fastervpn.world",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-650671509",
-      "type": "hysteria2",
-      "server": "3.36.93.74",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1073910128",
-      "type": "hysteria2",
-      "server": "43.203.252.104",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1111846155",
-      "type": "hysteria2",
-      "server": "152.67.200.82",
-      "port": 50160,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-855401605",
-      "type": "hysteria2",
-      "server": "47.129.189.148",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1103485381",
-      "type": "hysteria2",
-      "server": "13.250.120.9",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1087762019",
-      "type": "hysteria2",
-      "server": "47.129.0.20",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1049095367",
-      "type": "hysteria2",
-      "server": "us4.xiaoliyu.cyou",
-      "port": 4433,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1143582040",
-      "type": "hysteria2",
-      "server": "172.245.234.213",
-      "port": 55930,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1143644901",
-      "type": "hysteria2",
-      "server": "103.75.119.12",
-      "port": 55813,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
       "name": "trojan-1088567785",
       "type": "trojan",
       "server": "43.165.185.191",
       "port": 50000,
+      "source": "Au1rxx/free-vpn-subscriptions",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "trojan-201299290",
+      "type": "trojan",
+      "server": "161.34.39.108",
+      "port": 443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
     },
@@ -265,102 +65,6 @@
       "type": "vless",
       "server": "54.180.101.47",
       "port": 8686,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-705682024",
-      "type": "hysteria2",
-      "server": "202.146.222.29",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-467420662",
-      "type": "hysteria2",
-      "server": "202.146.222.174",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-540983040",
-      "type": "hysteria2",
-      "server": "202.146.222.89",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1103485375",
-      "type": "hysteria2",
-      "server": "13.212.76.106",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-947846093",
-      "type": "hysteria2",
-      "server": "139.28.168.56",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1026820218",
-      "type": "hysteria2",
-      "server": "15.223.183.81",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1016364146",
-      "type": "hysteria2",
-      "server": "15.223.122.197",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-474576739",
-      "type": "hysteria2",
-      "server": "hy2.123266.xyz",
-      "port": 33333,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-867097989",
-      "type": "hysteria2",
-      "server": "srv-a04472.21freedom.net",
-      "port": 11592,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-16610",
-      "type": "hysteria2",
-      "server": "103.115.109.49",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "shadowsocks-696792801",
-      "type": "ss",
-      "server": "118.107.222.231",
-      "port": 65443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "trojan-2525865",
-      "type": "trojan",
-      "server": "aa.ccmusic.jp",
-      "port": 443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
     },
@@ -389,84 +93,12 @@
       "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
-      "name": "hysteria2-1143644883",
-      "type": "hysteria2",
-      "server": "94.156.250.17",
-      "port": 55608,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
       "name": "trojan-1141381824",
       "type": "trojan",
       "server": "jp200m.jiasu.asia",
       "port": 50000,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-474576920",
-      "type": "hysteria2",
-      "server": "47.129.241.226",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-474576910",
-      "type": "hysteria2",
-      "server": "13.212.193.153",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-860502203",
-      "type": "hysteria2",
-      "server": "46.229.243.141",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-881565828",
-      "type": "hysteria2",
-      "server": "46.229.243.142",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1045025821",
-      "type": "hysteria2",
-      "server": "85.204.107.184",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1048867132",
-      "type": "hysteria2",
-      "server": "jackvpn21.mooo.com",
-      "port": 31603,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1060573964",
-      "type": "hysteria2",
-      "server": "54.151.142.26",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-658428994",
-      "type": "hysteria2",
-      "server": "vpn-uk-001.fastervpn.world",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "trojan-1141381828",
@@ -483,150 +115,6 @@
       "port": 8443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-215228348",
-      "type": "hysteria2",
-      "server": "vpn-kr-003.fastervpn.world",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-651117976",
-      "type": "hysteria2",
-      "server": "13.212.32.171",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-474576738",
-      "type": "hysteria2",
-      "server": "155.248.209.237",
-      "port": 33333,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-474576783",
-      "type": "hysteria2",
-      "server": "142.249.37.90",
-      "port": 44356,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-561697888",
-      "type": "hysteria2",
-      "server": "hy2.561891.xyz",
-      "port": 44356,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-658428995",
-      "type": "hysteria2",
-      "server": "vpn-in-001.fastervpn.world",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-722298619",
-      "type": "hysteria2",
-      "server": "vpn-ca-001.fastervpn.world",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1014472590",
-      "type": "hysteria2",
-      "server": "205.237.109.166",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1003510425",
-      "type": "hysteria2",
-      "server": "46.229.243.146",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-971362777",
-      "type": "hysteria2",
-      "server": "46.229.243.145",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1059313800",
-      "type": "hysteria2",
-      "server": "162.249.126.2",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1147415558",
-      "type": "hysteria2",
-      "server": "130.61.50.75",
-      "port": 6443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-863967007",
-      "type": "hysteria2",
-      "server": "hys22.wba-pn.ru",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-474576698",
-      "type": "hysteria2",
-      "server": "82.38.60.15",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-796133334",
-      "type": "hysteria2",
-      "server": "46.229.243.137",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1149856388",
-      "type": "hysteria2",
-      "server": "150-230-252-217.liao.kdns.fr",
-      "port": 50160,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-856081283",
-      "type": "hysteria2",
-      "server": "85.204.107.171",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1141551206",
-      "type": "hysteria2",
-      "server": "78.159.246.200",
-      "port": 8450,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "trojan-1146291192",
@@ -755,110 +243,6 @@
       "port": 8443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-857369683",
-      "type": "hysteria2",
-      "server": "163.192.14.135",
-      "port": 50160,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-657099854",
-      "type": "hysteria2",
-      "server": "192.220.56.72",
-      "port": 8882,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-932129977",
-      "type": "hysteria2",
-      "server": "46.229.243.144",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1098338334",
-      "type": "hysteria2",
-      "server": "162.249.126.6",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-920250251",
-      "type": "hysteria2",
-      "server": "freedom.chenlan.top",
-      "port": 12765,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-896857448",
-      "type": "hysteria2",
-      "server": "85.204.107.174",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1045025786",
-      "type": "hysteria2",
-      "server": "85.204.107.176",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1095634773",
-      "type": "hysteria2",
-      "server": "85.204.107.177",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-855833185",
-      "type": "hysteria2",
-      "server": "go.wwwinternetvideo.click",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-781395523",
-      "type": "hysteria2",
-      "server": "138.124.0.168",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-474576864",
-      "type": "hysteria2",
-      "server": "185.79.138.71",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1044608293",
-      "type": "hysteria2",
-      "server": "se.allgoodvpn.su",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1059438561",
-      "type": "hysteria2",
-      "server": "give.internet-card.sbs",
-      "port": 24444,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "vless-1149851390",
@@ -1013,94 +397,6 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "hysteria2-956723733",
-      "type": "hysteria2",
-      "server": "132.226.226.189",
-      "port": 50160,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1044752126",
-      "type": "hysteria2",
-      "server": "sg1.xiaoliyu.cyou",
-      "port": 1933,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1027662794",
-      "type": "hysteria2",
-      "server": "85.204.107.177",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-848874255",
-      "type": "hysteria2",
-      "server": "160.187.100.109",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-984679229",
-      "type": "hysteria2",
-      "server": "35.181.166.40",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-859306105",
-      "type": "hysteria2",
-      "server": "85.204.107.172",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-892012263",
-      "type": "hysteria2",
-      "server": "85.204.107.174",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1045026816",
-      "type": "hysteria2",
-      "server": "85.204.107.183",
-      "port": 8080,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-856354795",
-      "type": "hysteria2",
-      "server": "46.229.243.140",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "hysteria2-1046909483",
-      "type": "hysteria2",
-      "server": "kz03hy01.tcp-reset-club.net",
-      "port": 443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "hysteria2-1045025825",
-      "type": "hysteria2",
-      "server": "ru1.xiaoliyu.cyou",
-      "port": 4433,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
       "name": "vless-1149851395",
       "type": "vless",
       "server": "219.77.167.19",
@@ -1227,62 +523,6 @@
       "port": 8443,
       "source": "Au1rxx/free-vpn-subscriptions",
       "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "vless-1073055819",
-      "type": "vless",
-      "server": "us1.lunariai.ru",
-      "port": 8443,
-      "source": "Au1rxx/free-vpn-subscriptions",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇺🇸 United States [GH:MatinGhanbari/v2ray-conf]",
-      "type": "vless",
-      "server": "47.253.226.114",
-      "port": 443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "🇫🇷 France/Paris [GH:Epodonios/v2ray-configs]",
-      "type": "hysteria2",
-      "server": "35.181.169.140",
-      "port": 443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "🇳🇱 The Netherlands/Amsterdam [GH:ebrasha/free-v2ray-publi]",
-      "type": "hysteria2",
-      "server": "72.56.16.243",
-      "port": 443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "🇳🇱 The Netherlands/Amsterdam [GH:ebrasha/free-v2ray-publi] #2",
-      "type": "hysteria2",
-      "server": "72.56.92.120",
-      "port": 443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
-    },
-    {
-      "name": "🇷🇴 Romania [GH:ebrasha/free-v2ray-publi]",
-      "type": "hysteria2",
-      "server": "205.237.109.163",
-      "port": 8443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "TimeoutError: timed out"
-    },
-    {
-      "name": "🇳🇱 The Netherlands/Amsterdam [GH:Surfboardv2ray/TGParse]",
-      "type": "hysteria2",
-      "server": "72.56.102.31",
-      "port": 443,
-      "source": "awesome-vpn/awesome-vpn",
-      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "SS-加拿大>英国-NF解锁英国地区非自制剧-ChatGPT-144.217.164.29:12000",
@@ -5193,6 +4433,14 @@
       "type": "vless",
       "server": "159.69.193.221",
       "port": 1234,
+      "source": "anaer/Sub",
+      "reason": "TimeoutError: timed out"
+    },
+    {
+      "name": "德国 062",
+      "type": "vless",
+      "server": "116.202.19.249",
+      "port": 443,
       "source": "anaer/Sub",
       "reason": "TimeoutError: timed out"
     },
@@ -11165,14 +10413,6 @@
       "reason": "TimeoutError: timed out"
     },
     {
-      "name": "🇨🇳 CN 394 → tg@nicevpn123",
-      "type": "ss",
-      "server": "k9.b99.buzz",
-      "port": 48009,
-      "source": "NiceVPN123/NiceVPN",
-      "reason": "OSError: [Errno 101] Network is unreachable"
-    },
-    {
       "name": "🇨🇳 CN 395 → tg@nicevpn123",
       "type": "vmess",
       "server": "free.2apzhfa.xyz",
@@ -15917,6 +15157,14 @@
       "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
+      "name": "🇷🇺 RU 30 → tg@nicevpn123",
+      "type": "ss",
+      "server": "5.188.181.201",
+      "port": 9030,
+      "source": "NiceVPN123/NiceVPN",
+      "reason": "TimeoutError: timed out"
+    },
+    {
       "name": "🇷🇺 RU 33 → tg@nicevpn123",
       "type": "vmess",
       "server": "45.87.155.70",
@@ -20626,7 +19874,7 @@
       "server": "38.121.43.142",
       "port": 7306,
       "source": "NiceVPN123/NiceVPN",
-      "reason": "TimeoutError: timed out"
+      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "🇺🇸 US 434 → tg@nicevpn123",
@@ -21458,7 +20706,7 @@
       "server": "34.217.86.31",
       "port": 17415,
       "source": "NiceVPN123/NiceVPN",
-      "reason": "TimeoutError: timed out"
+      "reason": "ConnectionRefusedError: [Errno 111] Connection refused"
     },
     {
       "name": "🇺🇸 US 692 → tg@nicevpn123",

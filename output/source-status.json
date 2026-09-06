@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-06T05:48:38.358074+00:00",
+  "generated_at": "2026-09-06T06:12:43.778819+00:00",
   "proxy_count": 1000,
-  "checked": 7974,
-  "unavailable_count": 2798,
+  "checked": 7022,
+  "unavailable_count": 2704,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 4031,
-      "added": 3607,
-      "unavailable": 20
+      "received": 2914,
+      "added": 2514,
+      "unavailable": 4
     },
     {
       "name": "PuddinCat/BestClash",
@@ -26,7 +26,7 @@
       "ok": true,
       "received": 1873,
       "added": 1873,
-      "unavailable": 134
+      "unavailable": 61
     },
     {
       "name": "awesome-vpn/awesome-vpn",
@@ -34,7 +34,7 @@
       "ok": true,
       "received": 50,
       "added": 50,
-      "unavailable": 6
+      "unavailable": 0
     },
     {
       "name": "vxiaov/free_proxies",
@@ -58,7 +58,7 @@
       "ok": true,
       "received": 1412,
       "added": 1412,
-      "unavailable": 556
+      "unavailable": 557
     },
     {
       "name": "ermaozi01/free_clash_vpn",
