@@ -1,0 +1,9 @@
+# Python 虚拟环境
+.venv/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 运行时临时目录（mihomo 二进制、测试配置等，不入库）
+.tmp/
