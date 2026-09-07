@@ -25,6 +25,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # unavailable-sources.json 体积大（数百 KB/次）且仅供排查，不入库
-          git add output/clash.yaml output/source-status.json output/best.yaml
+          git add output/clash.yaml output/source-status.json output/best.yaml output/error-proxies.json
           git diff --cached --quiet || git commit -m "chore: update clash subscription"
           git push

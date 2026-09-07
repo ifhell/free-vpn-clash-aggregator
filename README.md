@@ -5,8 +5,9 @@
 ## 输出文件
 
 - **`output/clash.yaml`**：全部去重后的聚合节点，不做最大节点数 / 区域数量限制。
-- **`output/best.yaml`**：通过本地 mihomo 实例真实测速、能连通 `www.github.com` / `www.google.com` / `www.youtube.com` 三个网站的节点。每个节点带 `hit_count` 累计值（历史 best.yaml 中已存在的节点每次命中 +1，新节点记为 1），节点按 `hit_count` 从高到低排序，并在排序后应用最大节点数 / 区域数量限制。
-- **`output/source-status.json`**：每个上游最近一次抓取是否成功，以及本次测试通过数、best.yaml 节点数等统计。
+- **`output/best.yaml`**：通过本地 mihomo 实例真实测速、能连通 `www.google.com` / `www.youtube.com` **任一**网站的节点（两个目标只要有一个可达即保留）。每个节点带 `hit_count` 累计值（历史 best.yaml 中已存在的节点每次命中 +1，新节点记为 1），节点按 `hit_count` 从高到低排序，并在排序后应用最大节点数 / 区域数量限制。
+- **`output/error-proxies.json`**：检测时失败代理的缓存（按指纹记录失败类型，如 DNS 解析错误 / 连接失败 / 鉴权失败 / 超时等）。加载时会清理超过 7 天的记录，检测到某代理失败即写入；测试时会跳过文件中已存在的代理，避免反复测试已知不可用的节点、加快速度。
+- **`output/source-status.json`**：每个上游最近一次抓取是否成功，以及本次测试通过数、跳过数、各失败类型计数、best.yaml 节点数等统计。
 
 ## Clash Verge 导入
 

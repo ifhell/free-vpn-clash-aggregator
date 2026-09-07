@@ -20,6 +20,11 @@ SOURCES = ROOT / "sources.yaml"
 OUTPUT = ROOT / "output" / "clash.yaml"
 BEST = ROOT / "output" / "best.yaml"
 STATUS = ROOT / "output" / "source-status.json"
+ERROR_PROXIES = ROOT / "output" / "error-proxies.json"
+# Keep failed-proxy records at most this many days; older ones are purged on load.
+ERROR_MAX_AGE_DAYS = int(os.getenv("ERROR_MAX_AGE_DAYS", "7"))
+# Field order used to fingerprint a proxy; kept stable for the error-proxies cache.
+FINGERPRINT_FIELDS = ("type", "server", "port", "uuid", "password", "public-key", "private-key", "token")
 # curl executable and null-device path differ between Windows and POSIX runners
 CURL = "curl.exe" if platform.system().lower() == "windows" else "curl"
 NULL_DEV = "NUL" if platform.system().lower() == "windows" else "/dev/null"
@@ -71,8 +76,61 @@ def fetch(url: str) -> dict:
 
 
 def fingerprint(proxy: dict) -> tuple:
-    fields = ("type", "server", "port", "uuid", "password", "public-key", "private-key", "token")
-    return tuple(str(proxy.get(field, "")) for field in fields)
+    return tuple(str(proxy.get(field, "")) for field in FINGERPRINT_FIELDS)
+
+
+def fingerprint_to_dict(key: tuple) -> dict:
+    return {field: value for field, value in zip(FINGERPRINT_FIELDS, key)}
+
+
+# curl exit codes / stderr hints that map to a stable failure category
+def classify_curl_failure(returncode: int, stderr: str) -> str:
+    if returncode == 6 or "could not resolve host" in stderr or "couldn't resolve" in stderr:
+        return "dns"
+    if returncode in (7, 55, 56) or "failed to connect" in stderr or "connection refused" in stderr:
+        return "connect"
+    if returncode == 28 or "operation timed out" in stderr or "timed out" in stderr:
+        return "timeout"
+    if "407" in stderr or "proxy authentication required" in stderr or returncode == 67:
+        return "auth"
+    return "unknown"
+
+
+def load_error_proxies() -> dict[tuple, dict]:
+    """Load the failed-proxy cache, purging entries older than ERROR_MAX_AGE_DAYS."""
+    cache: dict[tuple, dict] = {}
+    if not ERROR_PROXIES.exists():
+        return cache
+    try:
+        raw = json.loads(ERROR_PROXIES.read_text(encoding="utf-8"))
+        records = raw if isinstance(raw, list) else raw.get("records", [])
+    except Exception:
+        return cache
+    now = datetime.now(timezone.utc)
+    for rec in records:
+        try:
+            at = datetime.fromisoformat(rec["at"])
+            if at.tzinfo is None:
+                at = at.replace(tzinfo=timezone.utc)
+            if (now - at).days > ERROR_MAX_AGE_DAYS:
+                continue  # stale record
+            fields = rec.get("fingerprint", {})
+            key = tuple(str(fields.get(f, "")) for f in FINGERPRINT_FIELDS)
+            if not any(key):  # all-empty fingerprint is unusable
+                continue
+            cache[key] = {"reason": rec.get("reason", "unknown"), "at": rec["at"]}
+        except Exception:
+            continue
+    return cache
+
+
+def save_error_proxies(cache: dict[tuple, dict]) -> None:
+    records = [
+        {"fingerprint": fingerprint_to_dict(key), "reason": info["reason"], "at": info["at"]}
+        for key, info in cache.items()
+    ]
+    payload = {"records": records}
+    ERROR_PROXIES.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def mihomo_binary() -> Path | None:
@@ -146,40 +204,58 @@ def make_mihomo_config(proxies: list[dict]) -> dict:
     }
 
 
-def test_proxy(proxy: dict) -> bool:
+def test_proxy(proxy: dict) -> str | None:
+    """Test connectivity to TEST_TARGETS. Return None if at least one target is reachable,
+    else a failure category (from the first failing target)."""
     base = f"http://127.0.0.1:{CONTROLLER_PORT}"
     name = proxy["name"]
     req = urllib.request.Request(f"{base}/proxies/PROXY", data=json.dumps({"name": name}).encode(), method="PUT", headers={"Content-Type": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=TEST_TIMEOUT) as resp:
             if resp.status not in (200, 204):
-                return False
+                return "controller"
     except Exception:
-        return False
+        return "controller"
     proxy_url = f"http://127.0.0.1:{MIXED_PORT}"
+    first_failure: str | None = None
     for target in TEST_TARGETS:
         result = subprocess.run(
             [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "5", "--max-time", str(TEST_TIMEOUT), target],
             capture_output=True,
         )
+        stderr = result.stderr.decode(errors="replace")
         if result.returncode != 0:
-            return False
+            # Remember the first failure's category, but keep checking: a later
+            # target may still be reachable, in which case the proxy is usable.
+            if first_failure is None:
+                first_failure = classify_curl_failure(result.returncode, stderr)
+            continue
         try:
             code = int(result.stdout.decode(errors="replace").strip())
         except ValueError:
-            return False
-        if code >= 400:
-            return False
-    return True
+            continue
+        if code < 400:
+            return None  # at least one target is reachable -> keep the proxy
+        if first_failure is None:
+            first_failure = "http"
+    return first_failure if first_failure is not None else "unknown"
 
 
-def run_tests(proxies: list[dict], binary: Path) -> list[dict]:
+def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
+    """Test proxies through a local mihomo instance, honoring and updating the error-proxy cache.
+
+    Returns (passed, error_stats) where error_stats counts tests by outcome:
+    {tested, skipped, passed, dns, connect, timeout, auth, http, controller, unknown}.
+    """
     config = make_mihomo_config(proxies)
     cfg_path = ROOT / ".tmp" / "mihomo-runtime.yaml"
     cfg_path.parent.mkdir(parents=True, exist_ok=True)
     cfg_path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
     proc = subprocess.Popen([str(binary), "-f", str(cfg_path), "-d", str(cfg_path.parent)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    cache = load_error_proxies()
+    stats = {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
     passed: list[dict] = []
+    now = datetime.now(timezone.utc)
     try:
         for _ in range(60):
             try:
@@ -193,15 +269,26 @@ def run_tests(proxies: list[dict], binary: Path) -> list[dict]:
         # the one shared PROXY group, so concurrent testers would race on it and
         # each route their curl through a peer's proxy. Bounded by TEST_MAX_NODES.
         for proxy in proxies[:TEST_MAX_NODES]:
-            if test_proxy(proxy):
+            key = fingerprint(proxy)
+            if key in cache:
+                stats["skipped"] += 1
+                continue
+            stats["tested"] += 1
+            reason = test_proxy(proxy)
+            if reason is None:
+                stats["passed"] += 1
                 passed.append(proxy)
+                continue
+            stats[reason] = stats.get(reason, 0) + 1
+            cache[key] = {"reason": reason, "at": now.isoformat()}
     finally:
         proc.terminate()
         try:
             proc.wait(timeout=5)
         except subprocess.TimeoutExpired:
             proc.kill()
-    return passed
+    save_error_proxies(cache)
+    return passed, stats
 
 
 def main() -> int:
@@ -288,13 +375,12 @@ def main() -> int:
     # --- Step 2: connectivity test through a local mihomo instance ---
     binary = mihomo_binary()
     print("DEBUG: mihomo binary =", binary, flush=True)
-    test_status = {"tested": 0, "passed": 0}
+    test_status = {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
     passing: list[dict] = []
     if binary is not None and proxies:
         print("DEBUG: starting tests on", len(proxies), "proxies", flush=True)
-        passing = run_tests(proxies, binary)
-        test_status["tested"] = min(len(proxies), TEST_MAX_NODES)
-        test_status["passed"] = len(passing)
+        passing, test_stats = run_tests(proxies, binary)
+        test_status = test_stats
         print("DEBUG: tests done, passed =", len(passing), flush=True)
 
     # --- Step 3: merge passing nodes with existing best.yaml hit counts, sort, cap ---
