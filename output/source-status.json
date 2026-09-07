@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-09-07T19:14:36.656188+00:00",
-  "clash_count": 6237,
-  "checked": 6237,
+  "generated_at": "2026-09-07T23:33:18.355345+00:00",
+  "clash_count": 6258,
+  "checked": 6258,
   "regions": {
-    "港台": 1,
+    "港台": 2,
     "东南亚": 3,
-    "日韩": 4,
-    "美加": 73,
+    "日韩": 3,
+    "美加": 77,
     "澳大利亚": 0,
-    "法国": 95,
+    "法国": 85,
     "英国": 2,
-    "德国": 6,
-    "荷兰": 78,
-    "罗马尼亚": 30,
+    "德国": 5,
+    "荷兰": 74,
+    "罗马尼亚": 32,
     "西班牙": 1,
-    "其他": 3
+    "其他": 15
   },
   "test": {
     "tested": 299,
     "skipped": 1,
-    "passed": 296,
+    "passed": 299,
     "dns": 0,
     "connect": 0,
-    "timeout": 2,
+    "timeout": 0,
     "auth": 0,
     "http": 0,
     "controller": 0,
-    "unknown": 1
+    "unknown": 0
   },
-  "best_count": 296,
+  "best_count": 299,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 1750,
-      "added": 1750
+      "received": 1613,
+      "added": 1613
     },
     {
       "name": "PuddinCat/BestClash",
@@ -48,8 +48,8 @@
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1793,
-      "added": 1793
+      "received": 1687,
+      "added": 1687
     },
     {
       "name": "awesome-vpn/awesome-vpn",
@@ -90,8 +90,8 @@
       "name": "peasoft/NoMoreWalls",
       "url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
       "ok": true,
-      "received": 26,
-      "added": 26
+      "received": 25,
+      "added": 25
     },
     {
       "name": "NiceVPN123/NiceVPN",
@@ -104,8 +104,8 @@
       "name": "chengaopan/AutoMergePublicNodes",
       "url": "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
       "ok": true,
-      "received": 28,
-      "added": 28
+      "received": 25,
+      "added": 25
     }
   ]
 }
