@@ -27,7 +27,7 @@ python -m venv .venv
 ```
 
 - `MAX_NODES=1000` 与 `REGION_CAP=100` 作用于 `output/best.yaml`（按 `hit_count` 排序后应用），不限制 `output/clash.yaml`。
-- 连通性测试会从 GitHub 下载 mihomo 二进制到 `.tmp/` 并本地启动，经其外部控制器逐个切换节点、通过 mixed-port 测试三个目标网站。可用 `TEST_TARGETS`、`TEST_TIMEOUT` 调整测试参数。
+- 连通性测试会从 GitHub 下载 mihomo 二进制到 `.tmp/` 并本地启动，经其外部控制器逐个切换节点、通过 mixed-port 测试 `www.google.com` 与 `www.youtube.com` 两个目标网站。测试为串行（单 mixed-port 无法无竞争地并发测多节点），并用 `TEST_MAX_NODES`（默认 300）限制每次测试的节点数以控制时长。可用 `TEST_TARGETS`、`TEST_TIMEOUT`、`TEST_MAX_NODES` 调整测试参数。
 - 节点越多，Clash Verge 启动和测速越慢，如需调整请自行权衡。
 
 ## 安全与合规

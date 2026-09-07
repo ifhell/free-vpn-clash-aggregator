@@ -32,10 +32,11 @@ MIHOMO_MIRROR = os.getenv(
     "MIHOMO_MIRROR",
     "https://github.com/MetaCubeX/mihomo/releases/download",
 )
-TEST_TARGETS = [t.strip() for t in os.getenv("TEST_TARGETS", "https://www.github.com,https://www.google.com,https://www.youtube.com").split(",") if t.strip()]
+TEST_TARGETS = [t.strip() for t in os.getenv("TEST_TARGETS", "https://www.google.com,https://www.youtube.com").split(",") if t.strip()]
 MIXED_PORT = int(os.getenv("MIXED_PORT", "7891"))
 CONTROLLER_PORT = int(os.getenv("CONTROLLER_PORT", "9090"))
-TEST_TIMEOUT = int(os.getenv("TEST_TIMEOUT", "15"))
+TEST_TIMEOUT = int(os.getenv("TEST_TIMEOUT", "10"))
+TEST_MAX_NODES = int(os.getenv("TEST_MAX_NODES", "300"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
     ("港台", re.compile(r"(?i)港|🇭🇰|香港|HKG|Hong|(?:^|[^a-z])HK(?:[^a-z]|$)|台|🇨🇳|台湾|新北|TPE|TWN|Taiwan|(?:^|[^a-z])TW(?:[^a-z]|$)")),
     ("东南亚", re.compile(r"(?i)坡|🇸🇬|新加坡|狮城|SGP|Singapore|(?:^|[^a-z])SG(?:[^a-z]|$)|菲律|🇵🇭|马尼拉|PHL|Philippine|(?:^|[^a-z])PH(?:[^a-z]|$)|越南|🇻🇳|河内|胡志明|VNM|Vietnam|(?:^|[^a-z])VN(?:[^a-z]|$)|马来|🇲🇾|吉隆坡|MYS|Malaysia|(?:^|[^a-z])MY(?:[^a-z]|$)|泰国|🇹🇭|曼谷|THA|Thailand|(?:^|[^a-z])TH(?:[^a-z]|$)|印尼|印度尼|🇮🇩|雅加达|IDN|Indonesia|(?:^|[^a-z])ID(?:[^a-z]|$)|柬埔寨|🇰🇭|金边|老挝|缅甸|🇲🇲|文莱|🇧🇳")),
@@ -129,7 +130,8 @@ def mihomo_binary() -> Path | None:
     return binary
 
 
-def make_mihomo_config(proxies: list[dict], names: list[str]) -> dict:
+def make_mihomo_config(proxies: list[dict]) -> dict:
+    names = [p["name"] for p in proxies]
     return {
         "mixed-port": MIXED_PORT,
         "allow-lan": False,
@@ -157,7 +159,7 @@ def test_proxy(proxy: dict) -> bool:
     proxy_url = f"http://127.0.0.1:{MIXED_PORT}"
     for target in TEST_TARGETS:
         result = subprocess.run(
-            [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "8", "--max-time", str(TEST_TIMEOUT), target],
+            [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "5", "--max-time", str(TEST_TIMEOUT), target],
             capture_output=True,
         )
         if result.returncode != 0:
@@ -172,8 +174,7 @@ def test_proxy(proxy: dict) -> bool:
 
 
 def run_tests(proxies: list[dict], binary: Path) -> list[dict]:
-    names = [p["name"] for p in proxies]
-    config = make_mihomo_config(proxies, names)
+    config = make_mihomo_config(proxies)
     cfg_path = ROOT / ".tmp" / "mihomo-runtime.yaml"
     cfg_path.parent.mkdir(parents=True, exist_ok=True)
     cfg_path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
@@ -188,9 +189,10 @@ def run_tests(proxies: list[dict], binary: Path) -> list[dict]:
                 time.sleep(0.5)
         else:
             raise RuntimeError("mihomo did not start in time")
-        # Run sequentially: the PROXY group is shared, so concurrent testers would
-        # race to select a node and route their curl through a different proxy.
-        for proxy in proxies:
+        # Sequential is required: the single mixed-port routes every request through
+        # the one shared PROXY group, so concurrent testers would race on it and
+        # each route their curl through a peer's proxy. Bounded by TEST_MAX_NODES.
+        for proxy in proxies[:TEST_MAX_NODES]:
             if test_proxy(proxy):
                 passed.append(proxy)
     finally:
@@ -291,7 +293,7 @@ def main() -> int:
     if binary is not None and proxies:
         print("DEBUG: starting tests on", len(proxies), "proxies", flush=True)
         passing = run_tests(proxies, binary)
-        test_status["tested"] = len(proxies)
+        test_status["tested"] = min(len(proxies), TEST_MAX_NODES)
         test_status["passed"] = len(passing)
         print("DEBUG: tests done, passed =", len(passing), flush=True)
 
