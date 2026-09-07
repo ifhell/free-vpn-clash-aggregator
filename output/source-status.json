@@ -1,33 +1,41 @@
 {
-  "generated_at": "2026-09-07T14:12:11.441063+00:00",
-  "clash_count": 6782,
-  "checked": 6782,
+  "generated_at": "2026-09-07T15:03:37.759803+00:00",
+  "clash_count": 6261,
+  "checked": 6261,
   "regions": {
-    "港台": 0,
-    "东南亚": 1,
-    "日韩": 0,
-    "美加": 66,
+    "港台": 1,
+    "东南亚": 5,
+    "日韩": 1,
+    "美加": 77,
     "澳大利亚": 0,
-    "法国": 68,
-    "英国": 3,
+    "法国": 94,
+    "英国": 2,
     "德国": 3,
-    "荷兰": 63,
-    "罗马尼亚": 33,
+    "荷兰": 76,
+    "罗马尼亚": 37,
     "西班牙": 2,
-    "其他": 6
+    "其他": 0
   },
   "test": {
     "tested": 300,
-    "passed": 245
+    "skipped": 0,
+    "passed": 298,
+    "dns": 0,
+    "connect": 0,
+    "timeout": 0,
+    "auth": 0,
+    "http": 0,
+    "controller": 0,
+    "unknown": 2
   },
-  "best_count": 245,
+  "best_count": 298,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 2267,
-      "added": 2267
+      "received": 1815,
+      "added": 1815
     },
     {
       "name": "PuddinCat/BestClash",
