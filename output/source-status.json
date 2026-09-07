@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-09-07T15:03:37.759803+00:00",
-  "clash_count": 6261,
-  "checked": 6261,
+  "generated_at": "2026-09-07T19:14:36.656188+00:00",
+  "clash_count": 6237,
+  "checked": 6237,
   "regions": {
     "港台": 1,
-    "东南亚": 5,
-    "日韩": 1,
-    "美加": 77,
+    "东南亚": 3,
+    "日韩": 4,
+    "美加": 73,
     "澳大利亚": 0,
-    "法国": 94,
+    "法国": 95,
     "英国": 2,
-    "德国": 3,
-    "荷兰": 76,
-    "罗马尼亚": 37,
-    "西班牙": 2,
-    "其他": 0
+    "德国": 6,
+    "荷兰": 78,
+    "罗马尼亚": 30,
+    "西班牙": 1,
+    "其他": 3
   },
   "test": {
-    "tested": 300,
-    "skipped": 0,
-    "passed": 298,
+    "tested": 299,
+    "skipped": 1,
+    "passed": 296,
     "dns": 0,
     "connect": 0,
-    "timeout": 0,
+    "timeout": 2,
     "auth": 0,
     "http": 0,
     "controller": 0,
-    "unknown": 2
+    "unknown": 1
   },
-  "best_count": 298,
+  "best_count": 296,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 1815,
-      "added": 1815
+      "received": 1750,
+      "added": 1750
     },
     {
       "name": "PuddinCat/BestClash",
@@ -48,8 +48,8 @@
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1785,
-      "added": 1785
+      "received": 1793,
+      "added": 1793
     },
     {
       "name": "awesome-vpn/awesome-vpn",
@@ -76,8 +76,8 @@
       "name": "anaer/Sub",
       "url": "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
       "ok": true,
-      "received": 1416,
-      "added": 1416
+      "received": 1502,
+      "added": 1502
     },
     {
       "name": "ermaozi01/free_clash_vpn",
@@ -90,8 +90,8 @@
       "name": "peasoft/NoMoreWalls",
       "url": "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
       "ok": true,
-      "received": 28,
-      "added": 28
+      "received": 26,
+      "added": 26
     },
     {
       "name": "NiceVPN123/NiceVPN",
