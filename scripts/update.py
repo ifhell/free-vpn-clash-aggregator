@@ -20,6 +20,9 @@ SOURCES = ROOT / "sources.yaml"
 OUTPUT = ROOT / "output" / "clash.yaml"
 BEST = ROOT / "output" / "best.yaml"
 STATUS = ROOT / "output" / "source-status.json"
+# curl executable and null-device path differ between Windows and POSIX runners
+CURL = "curl.exe" if platform.system().lower() == "windows" else "curl"
+NULL_DEV = "NUL" if platform.system().lower() == "windows" else "/dev/null"
 MAX_NODES = int(os.getenv("MAX_NODES", "1000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
 # Region caps mirror the proxy groups in clash-verge-local.yaml; filters are copied verbatim
@@ -54,7 +57,7 @@ def region_of(name: str) -> str:
 
 def fetch(url: str) -> dict:
     result = subprocess.run(
-        ["curl.exe", "-sS", "-L", "--connect-timeout", "10", "--max-time", str(TIMEOUT), url],
+        [CURL, "-sS", "-L", "--connect-timeout", "10", "--max-time", str(TIMEOUT), url],
         capture_output=True, timeout=TIMEOUT + 10,
     )
     if result.returncode != 0:
@@ -106,7 +109,7 @@ def mihomo_binary() -> Path | None:
     url = f"{MIHOMO_MIRROR}/{MIHOMO_TAG}/{asset}.{ext}"
     archive = tmpdir / f"{asset}.{ext}"
     result = subprocess.run(
-        ["curl.exe", "-sS", "-L", "--connect-timeout", "10", "--max-time", "120", "-o", str(archive), url],
+        [CURL, "-sS", "-L", "--connect-timeout", "10", "--max-time", "120", "-o", str(archive), url],
         capture_output=True,
     )
     if result.returncode != 0:
@@ -154,7 +157,7 @@ def test_proxy(proxy: dict) -> bool:
     proxy_url = f"http://127.0.0.1:{MIXED_PORT}"
     for target in TEST_TARGETS:
         result = subprocess.run(
-            ["curl.exe", "-sS", "-o", "NUL", "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "8", "--max-time", str(TEST_TIMEOUT), target],
+            [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "8", "--max-time", str(TEST_TIMEOUT), target],
             capture_output=True,
         )
         if result.returncode != 0:
