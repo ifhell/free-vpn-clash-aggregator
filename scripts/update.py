@@ -1,16 +1,12 @@
 from __future__ import annotations
 
-import http.client
 import json
 import os
 import re
-import socket
 import sys
 import urllib.request
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote
 
 import yaml
 
@@ -18,12 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "sources.yaml"
 OUTPUT = ROOT / "output" / "clash.yaml"
 STATUS = ROOT / "output" / "source-status.json"
-UNAVAILABLE = ROOT / "output" / "unavailable-sources.json"
 MAX_NODES = int(os.getenv("MAX_NODES", "1000"))
 TIMEOUT = int(os.getenv("FETCH_TIMEOUT", "20"))
-CHECK_TIMEOUT = int(os.getenv("CHECK_TIMEOUT", "5"))
-CHECK_WORKERS = int(os.getenv("CHECK_WORKERS", "100"))
-CHECK_URL = os.getenv("CHECK_URL", "https://www.google.com/generate_204")
 # Region caps mirror the proxy groups in clash-verge-local.yaml; filters are copied verbatim
 REGION_CAP = int(os.getenv("REGION_CAP", "100"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
@@ -58,51 +50,6 @@ def fetch(url: str) -> dict:
 def fingerprint(proxy: dict) -> tuple:
     fields = ("type", "server", "port", "uuid", "password", "public-key", "private-key", "token")
     return tuple(str(proxy.get(field, "")) for field in fields)
-
-
-UDP_TYPES = {"hysteria", "hysteria2", "tuic", "wireguard"}
-
-
-def check_http_proxy(proxy: dict, server: str, port: int) -> tuple[bool, str]:
-    # http type gets a real request through the proxy (CONNECT tunnel for https), not just a TCP probe
-    auth = ""
-    if proxy.get("username"):
-        auth = quote(str(proxy["username"]))
-        if proxy.get("password"):
-            auth += f":{quote(str(proxy['password']))}"
-        auth += "@"
-    proxy_url = f"http://{auth}{server}:{port}"
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({"http": proxy_url, "https": proxy_url}))
-    try:
-        with opener.open(CHECK_URL, timeout=CHECK_TIMEOUT) as response:
-            return True, ""
-    except (OSError, http.client.HTTPException) as exc:
-        return False, f"{exc.__class__.__name__}: {exc}"
-
-
-def check_proxy(proxy: dict) -> tuple[bool, str]:
-    # TCP-level reachability only: proves the port is open, not a full protocol handshake.
-    # QUIC/UDP transports never accept TCP connections, so probing them would kill live nodes.
-    proxy_type = str(proxy.get("type", "")).strip().lower()
-    if proxy_type in UDP_TYPES:
-        return True, ""
-    server = str(proxy.get("server", "")).strip()
-    try:
-        port = int(proxy.get("port", 0))
-    except (TypeError, ValueError):
-        return False, f"invalid port: {proxy.get('port')!r}"
-    if not server or not 0 < port < 65536:
-        return False, f"invalid server/port: {server!r}:{port!r}"
-    if proxy_type == "http":
-        return check_http_proxy(proxy, server, port)
-    try:
-        with socket.create_connection((server, port), timeout=CHECK_TIMEOUT):
-            return True, ""
-    except ConnectionRefusedError as exc:
-        # Refused means the host answered, so the node is not proven dead; keep it
-        return True, f"connection refused (kept): {exc}"
-    except OSError as exc:
-        return False, f"{exc.__class__.__name__}: {exc}"
 
 
 def main() -> int:
@@ -146,50 +93,10 @@ def main() -> int:
         proxy["name"] = new_name
         deduped.append(proxy)
 
-    # Probe node availability concurrently and drop dead ones
-    results: dict[int, tuple[bool, str]] = {}
-    with ThreadPoolExecutor(max_workers=CHECK_WORKERS) as pool:
-        futures = {pool.submit(check_proxy, proxy): index for index, proxy in enumerate(deduped)}
-        for future in as_completed(futures):
-            results[futures[future]] = future.result()
-    available: list[dict] = []
-    unavailable_records: list[dict] = []
-    kept_on_refused = 0
-    for index, proxy in enumerate(deduped):
-        ok, reason = results[index]
-        if ok:
-            if reason:
-                kept_on_refused += 1
-            available.append(proxy)
-            continue
-        unavailable_records.append({
-            "name": proxy.get("name", ""),
-            "type": proxy.get("type", ""),
-            "server": proxy.get("server", ""),
-            "port": proxy.get("port", ""),
-            "source": proxy.get("_source", ""),
-            "reason": reason,
-        })
-    UNAVAILABLE.write_text(json.dumps({
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "checked": len(deduped),
-        "available": len(available),
-        "unavailable": len(unavailable_records),
-        "kept_on_refused": kept_on_refused,
-        "nodes": unavailable_records,
-    }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    # Roll per-source unavailable counts into the fetch status
-    dead_by_source: dict[str, int] = {}
-    for record in unavailable_records:
-        dead_by_source[record["source"]] = dead_by_source.get(record["source"], 0) + 1
-    for entry in status:
-        entry["unavailable"] = dead_by_source.get(entry["name"], 0)
-
     # Fix duplicate names
     proxies: list[dict] = []
     used_names: set[str] = set()
-    for proxy in available:
+    for proxy in deduped:
         base_name = proxy["name"]
         candidate_name = base_name
         suffix = 2
@@ -240,8 +147,6 @@ def main() -> int:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "proxy_count": len(proxies),
         "checked": len(deduped),
-        "unavailable_count": len(unavailable_records),
-        "kept_on_refused": kept_on_refused,
         "regions": region_stats,
         "sources": status,
     }
