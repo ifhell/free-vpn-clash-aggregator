@@ -57,6 +57,9 @@ WORKERS = int(os.getenv("WORKERS", "8"))
 # full proxy test. 0 disables the pre-scan entirely.
 PRESCREEN_WORKERS = int(os.getenv("PRESCREEN_WORKERS", "50"))
 PRESCREEN_TIMEOUT = float(os.getenv("PRESCREEN_TIMEOUT", "2"))
+# How many days a TCP-dead result stays cached. Dead nodes occasionally revive
+# (server restarts), so after this window the pre-scan re-probes them.
+ERROR_TCP_DEAD_DAYS = int(os.getenv("ERROR_TCP_DEAD_DAYS", "7"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
     ("港台", re.compile(r"(?i)港|🇭🇰|香港|HKG|Hong|(?:^|[^a-z])HK(?:[^a-z]|$)|台|🇨🇳|台湾|新北|TPE|TWN|Taiwan|(?:^|[^a-z])TW(?:[^a-z]|$)")),
     ("东南亚", re.compile(r"(?i)坡|🇸🇬|新加坡|狮城|SGP|Singapore|(?:^|[^a-z])SG(?:[^a-z]|$)|菲律|🇵🇭|马尼拉|PHL|Philippine|(?:^|[^a-z])PH(?:[^a-z]|$)|越南|🇻🇳|河内|胡志明|VNM|Vietnam|(?:^|[^a-z])VN(?:[^a-z]|$)|马来|🇲🇾|吉隆坡|MYS|Malaysia|(?:^|[^a-z])MY(?:[^a-z]|$)|泰国|🇹🇭|曼谷|THA|Thailand|(?:^|[^a-z])TH(?:[^a-z]|$)|印尼|印度尼|🇮🇩|雅加达|IDN|Indonesia|(?:^|[^a-z])ID(?:[^a-z]|$)|柬埔寨|🇰🇭|金边|老挝|缅甸|🇲🇲|文莱|🇧🇳")),
@@ -132,9 +135,12 @@ def load_error_proxies() -> dict[tuple, dict]:
             if at.tzinfo is None:
                 at = at.replace(tzinfo=timezone.utc)
             reason = rec.get("reason", "unknown")
-            if reason not in ERROR_HARD_REASONS:
+            if reason == "tcp_dead":
+                if (now - at).days > ERROR_TCP_DEAD_DAYS:
+                    continue  # stale pre-scan result -> allow re-probe
+            elif reason not in ERROR_HARD_REASONS:
                 continue  # soft failure was cached by an older version; retest it
-            if (now - at).days > ERROR_MAX_AGE_DAYS:
+            elif (now - at).days > ERROR_MAX_AGE_DAYS:
                 continue  # stale record
             fields = rec.get("fingerprint", {})
             key = tuple(str(fields.get(f, "")) for f in FINGERPRINT_FIELDS)
@@ -292,16 +298,35 @@ def _tcp_reachable(proxy: dict) -> bool:
 
 def prescreen_proxies(proxies: list[dict]) -> list[dict]:
     """Concurrently TCP-ping every proxy and keep only those whose server:port
-    accepts a connection. Skips proxies already cached as hard failures."""
+    accepts a connection.
+
+    TCP-dead results are cached under the `tcp_dead` reason (bounded by
+    ERROR_TCP_DEAD_DAYS) so dead nodes aren't re-probed on later runs. Runs in the
+    main thread before any parallel workers start, so it can safely read/write the
+    cache file itself. Never mis-filters: a reachable node always passes TCP, so
+    the full proxy test later is the authoritative check."""
     cache = load_error_proxies()
-    todo = [p for p in proxies if fingerprint(p) not in cache]
+    now = datetime.now(timezone.utc)
+    todo: list[dict] = []
+    for p in proxies:
+        info = cache.get(fingerprint(p))
+        if info and info.get("reason") == "tcp_dead":
+            # skip re-probing nodes we already know are TCP-dead this window
+            continue
+        todo.append(p)
     if not todo:
         return []
     reachable: list[dict] = []
+    new_dead: dict[tuple, dict] = {}
     with ThreadPoolExecutor(max_workers=PRESCREEN_WORKERS) as ex:
         for proxy, ok in zip(todo, ex.map(_tcp_reachable, todo)):
             if ok:
                 reachable.append(proxy)
+            else:
+                new_dead[fingerprint(proxy)] = {"reason": "tcp_dead", "at": now.isoformat()}
+    if new_dead:
+        cache.update(new_dead)
+        save_error_proxies(cache)
     return reachable
 
 

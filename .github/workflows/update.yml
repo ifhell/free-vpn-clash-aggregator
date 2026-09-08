@@ -1,10 +1,11 @@
 name: Update Clash subscription
 
-on:
-  workflow_dispatch:
-  schedule:
-    # 每 3 小时 :10 运行，与 sync-rules（每天 0 点整）错开，避免同时 push 冲突
-    - cron: "10 */3 * * *"
+# 已暂停：暂不自动执行。恢复时取消下面 on 块的注释即可。
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     # 每 3 小时 :10 运行，与 sync-rules（每天 0 点整）错开，避免同时 push 冲突
+#     - cron: "10 */3 * * *"
 
 permissions:
   contents: write
