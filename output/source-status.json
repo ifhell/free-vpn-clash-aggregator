@@ -1,25 +1,27 @@
 {
-  "generated_at": "2026-09-08T04:35:43.490120+00:00",
-  "clash_count": 8660,
-  "checked": 8660,
+  "generated_at": "2026-09-08T08:59:18.740554+00:00",
+  "clash_count": 7720,
+  "checked": 7720,
   "regions": {
-    "港台": 2,
-    "东南亚": 3,
-    "日韩": 3,
-    "美加": 69,
-    "澳大利亚": 0,
-    "法国": 87,
-    "英国": 4,
-    "德国": 3,
-    "荷兰": 90,
-    "罗马尼亚": 29,
-    "西班牙": 2,
-    "其他": 7
+    "港台": 13,
+    "东南亚": 24,
+    "日韩": 30,
+    "美加": 100,
+    "澳大利亚": 8,
+    "法国": 100,
+    "英国": 33,
+    "德国": 51,
+    "荷兰": 100,
+    "罗马尼亚": 37,
+    "西班牙": 20,
+    "其他": 484
   },
   "test": {
-    "tested": 299,
-    "skipped": 1,
-    "passed": 299,
+    "prescreen": 7720,
+    "prescreened": 4745,
+    "tested": 4745,
+    "skipped": 0,
+    "passed": 4745,
     "dns": 0,
     "connect": 0,
     "timeout": 0,
@@ -28,14 +30,14 @@
     "controller": 0,
     "unknown": 0
   },
-  "best_count": 299,
+  "best_count": 1000,
   "sources": [
     {
       "name": "cbusifabcap/daily_free_vpn",
       "url": "https://raw.githubusercontent.com/cbusifabcap/daily_free_vpn/refs/heads/main/sub/Clash.yml",
       "ok": true,
-      "received": 4116,
-      "added": 4116
+      "received": 3031,
+      "added": 3031
     },
     {
       "name": "PuddinCat/BestClash",
@@ -48,8 +50,8 @@
       "name": "Au1rxx/free-vpn-subscriptions",
       "url": "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
       "ok": true,
-      "received": 1833,
-      "added": 1833
+      "received": 1761,
+      "added": 1761
     },
     {
       "name": "awesome-vpn/awesome-vpn",
@@ -104,8 +106,8 @@
       "name": "chengaopan/AutoMergePublicNodes",
       "url": "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
       "ok": true,
-      "received": 31,
-      "added": 31
+      "received": 34,
+      "added": 34
     }
   ]
 }
