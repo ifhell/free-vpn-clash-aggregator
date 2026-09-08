@@ -23,6 +23,10 @@ STATUS = ROOT / "output" / "source-status.json"
 ERROR_PROXIES = ROOT / "output" / "error-proxies.json"
 # Keep failed-proxy records at most this many days; older ones are purged on load.
 ERROR_MAX_AGE_DAYS = int(os.getenv("ERROR_MAX_AGE_DAYS", "7"))
+# Only hard/network failures get blacklisted. Ambiguous failures (unknown/auth/
+# http/controller) are NOT cached, so potentially-working nodes are retested each
+# run instead of being skipped forever.
+ERROR_HARD_REASONS = frozenset({"dns", "connect", "timeout"})
 # Field order used to fingerprint a proxy; kept stable for the error-proxies cache.
 FINGERPRINT_FIELDS = ("type", "server", "port", "uuid", "password", "public-key", "private-key", "token")
 # curl executable and null-device path differ between Windows and POSIX runners
@@ -41,7 +45,6 @@ TEST_TARGETS = [t.strip() for t in os.getenv("TEST_TARGETS", "https://www.google
 MIXED_PORT = int(os.getenv("MIXED_PORT", "7891"))
 CONTROLLER_PORT = int(os.getenv("CONTROLLER_PORT", "9090"))
 TEST_TIMEOUT = int(os.getenv("TEST_TIMEOUT", "10"))
-TEST_MAX_NODES = int(os.getenv("TEST_MAX_NODES", "300"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
     ("港台", re.compile(r"(?i)港|🇭🇰|香港|HKG|Hong|(?:^|[^a-z])HK(?:[^a-z]|$)|台|🇨🇳|台湾|新北|TPE|TWN|Taiwan|(?:^|[^a-z])TW(?:[^a-z]|$)")),
     ("东南亚", re.compile(r"(?i)坡|🇸🇬|新加坡|狮城|SGP|Singapore|(?:^|[^a-z])SG(?:[^a-z]|$)|菲律|🇵🇭|马尼拉|PHL|Philippine|(?:^|[^a-z])PH(?:[^a-z]|$)|越南|🇻🇳|河内|胡志明|VNM|Vietnam|(?:^|[^a-z])VN(?:[^a-z]|$)|马来|🇲🇾|吉隆坡|MYS|Malaysia|(?:^|[^a-z])MY(?:[^a-z]|$)|泰国|🇹🇭|曼谷|THA|Thailand|(?:^|[^a-z])TH(?:[^a-z]|$)|印尼|印度尼|🇮🇩|雅加达|IDN|Indonesia|(?:^|[^a-z])ID(?:[^a-z]|$)|柬埔寨|🇰🇭|金边|老挝|缅甸|🇲🇲|文莱|🇧🇳")),
@@ -97,7 +100,11 @@ def classify_curl_failure(returncode: int, stderr: str) -> str:
 
 
 def load_error_proxies() -> dict[tuple, dict]:
-    """Load the failed-proxy cache, purging entries older than ERROR_MAX_AGE_DAYS."""
+    """Load the failed-proxy cache, purging entries older than ERROR_MAX_AGE_DAYS.
+
+    Only hard/network failures (dns/connect/timeout) are ever cached, so entries
+    here are deterministic blacklists; soft failures are retested each run.
+    """
     cache: dict[tuple, dict] = {}
     if not ERROR_PROXIES.exists():
         return cache
@@ -112,13 +119,16 @@ def load_error_proxies() -> dict[tuple, dict]:
             at = datetime.fromisoformat(rec["at"])
             if at.tzinfo is None:
                 at = at.replace(tzinfo=timezone.utc)
+            reason = rec.get("reason", "unknown")
+            if reason not in ERROR_HARD_REASONS:
+                continue  # soft failure was cached by an older version; retest it
             if (now - at).days > ERROR_MAX_AGE_DAYS:
                 continue  # stale record
             fields = rec.get("fingerprint", {})
             key = tuple(str(fields.get(f, "")) for f in FINGERPRINT_FIELDS)
             if not any(key):  # all-empty fingerprint is unusable
                 continue
-            cache[key] = {"reason": rec.get("reason", "unknown"), "at": rec["at"]}
+            cache[key] = {"reason": reason, "at": rec["at"]}
         except Exception:
             continue
     return cache
@@ -205,8 +215,9 @@ def make_mihomo_config(proxies: list[dict]) -> dict:
 
 
 def test_proxy(proxy: dict) -> str | None:
-    """Test connectivity to TEST_TARGETS. Return None if at least one target is reachable,
-    else a failure category (from the first failing target)."""
+    """Test connectivity to TEST_TARGETS. Return None only if every target is
+    reachable (HTTP < 400); otherwise a failure category (from the first failing
+    target)."""
     base = f"http://127.0.0.1:{CONTROLLER_PORT}"
     name = proxy["name"]
     req = urllib.request.Request(f"{base}/proxies/PROXY", data=json.dumps({"name": name}).encode(), method="PUT", headers={"Content-Type": "application/json"})
@@ -224,21 +235,24 @@ def test_proxy(proxy: dict) -> str | None:
             capture_output=True,
         )
         stderr = result.stderr.decode(errors="replace")
-        if result.returncode != 0:
-            # Remember the first failure's category, but keep checking: a later
-            # target may still be reachable, in which case the proxy is usable.
-            if first_failure is None:
-                first_failure = classify_curl_failure(result.returncode, stderr)
-            continue
+        # Prefer the parsed HTTP status: a 2xx/3xx body is a reachable target even
+        # when curl exits non-zero (e.g. Windows schannel "missing close_notify"
+        # warnings are benign but set returncode != 0). Only fall back to classifying
+        # the exit code when no usable HTTP status came back.
+        code: int | None = None
         try:
             code = int(result.stdout.decode(errors="replace").strip())
         except ValueError:
-            continue
-        if code < 400:
-            return None  # at least one target is reachable -> keep the proxy
-        if first_failure is None:
+            code = None
+        if code is not None and code < 400:
+            continue  # this target reached us -> passes
+        if first_failure is not None:
+            continue  # already failed; keep the first category
+        if code is not None:
             first_failure = "http"
-    return first_failure if first_failure is not None else "unknown"
+        else:
+            first_failure = classify_curl_failure(result.returncode, stderr)
+    return first_failure
 
 
 def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
@@ -267,8 +281,8 @@ def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
             raise RuntimeError("mihomo did not start in time")
         # Sequential is required: the single mixed-port routes every request through
         # the one shared PROXY group, so concurrent testers would race on it and
-        # each route their curl through a peer's proxy. Bounded by TEST_MAX_NODES.
-        for proxy in proxies[:TEST_MAX_NODES]:
+        # each route their curl through a peer's proxy.
+        for proxy in proxies:
             key = fingerprint(proxy)
             if key in cache:
                 stats["skipped"] += 1
@@ -280,7 +294,11 @@ def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
                 passed.append(proxy)
                 continue
             stats[reason] = stats.get(reason, 0) + 1
-            cache[key] = {"reason": reason, "at": now.isoformat()}
+            # Only hard/network failures (dns/connect/timeout) are cached as blacklist.
+            # Soft/ambiguous failures (unknown/auth/http/controller) are unreliable and
+            # may be working nodes, so do NOT cache them -> they get retested next run.
+            if reason in ERROR_HARD_REASONS:
+                cache[key] = {"reason": reason, "at": now.isoformat()}
     finally:
         proc.terminate()
         try:
