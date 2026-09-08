@@ -5,8 +5,8 @@
 ## 输出文件
 
 - **`output/clash.yaml`**：全部去重后的聚合节点，不做最大节点数 / 区域数量限制。
-- **`output/best.yaml`**：通过本地 mihomo 实例真实测速、能连通 `www.google.com` / `www.youtube.com` **任一**网站的节点（两个目标只要有一个可达即保留）。每个节点带 `hit_count` 累计值（历史 best.yaml 中已存在的节点每次命中 +1，新节点记为 1），节点按 `hit_count` 从高到低排序，并在排序后应用最大节点数 / 区域数量限制。
-- **`output/error-proxies.json`**：检测时失败代理的缓存（按指纹记录失败类型，如 DNS 解析错误 / 连接失败 / 鉴权失败 / 超时等）。加载时会清理超过 7 天的记录，检测到某代理失败即写入；测试时会跳过文件中已存在的代理，避免反复测试已知不可用的节点、加快速度。
+- **`output/best.yaml`**：通过本地 mihomo 实例真实测速、能连通 `www.google.com` 与 `www.youtube.com` **全部**目标的节点（两个目标都必须可达才保留）。每个节点带 `hit_count` 累计值（历史 best.yaml 中已存在的节点每次命中 +1，新节点记为 1），节点按 `hit_count` 从高到低排序，并在排序后应用最大节点数 / 区域数量限制。
+- **`output/error-proxies.json`**：检测时失败代理的缓存（按指纹记录失败类型，如 DNS 解析错误 / 连接失败 / 超时等）。只缓存确定性的网络失败（`dns`/`connect`/`timeout`），7 天后过期；模糊/疑似误判的失败（`unknown`/`auth`/`http`/`controller`，常是 TLS 握手或分类错误）**不缓存**，每次运行会重新测试，避免把其实可连通的节点永久跳过。测试时会跳过缓存中的硬失败节点，加快速度。
 - **`output/source-status.json`**：每个上游最近一次抓取是否成功，以及本次测试通过数、跳过数、各失败类型计数、best.yaml 节点数等统计。
 
 ## Clash Verge 导入
@@ -28,7 +28,7 @@ python -m venv .venv
 ```
 
 - `MAX_NODES=1000` 与 `REGION_CAP=100` 作用于 `output/best.yaml`（按 `hit_count` 排序后应用），不限制 `output/clash.yaml`。
-- 连通性测试会从 GitHub 下载 mihomo 二进制到 `.tmp/` 并本地启动，经其外部控制器逐个切换节点、通过 mixed-port 测试 `www.google.com` 与 `www.youtube.com` 两个目标网站。测试为串行（单 mixed-port 无法无竞争地并发测多节点），并用 `TEST_MAX_NODES`（默认 300）限制每次测试的节点数以控制时长。可用 `TEST_TARGETS`、`TEST_TIMEOUT`、`TEST_MAX_NODES` 调整测试参数。
+- 连通性测试分两阶段：先用高并发 TCP 预筛（`PRESCREEN_WORKERS`，默认 50）快速丢弃约 80% 的死节点，再对存活节点经本地 mihomo 实例做完整代理测试，测试 `www.google.com` 与 `www.youtube.com` 两个目标网站。完整测试由多个并行 mihomo 实例（`WORKERS`，默认 8）分担，每个实例使用独立端口，避免串行单端口导致的竞争与超时。每个目标的 `--connect-timeout` 由 `TEST_CONNECT_TIMEOUT`（默认 3 秒）、总时限由 `TEST_TIMEOUT`（默认 5 秒）控制。可用 `TEST_TARGETS`、`TEST_CONNECT_TIMEOUT`、`TEST_TIMEOUT`、`WORKERS`、`PRESCREEN_WORKERS`、`PRESCREEN_TIMEOUT` 调整测试参数。
 - 节点越多，Clash Verge 启动和测速越慢，如需调整请自行权衡。
 
 ## 安全与合规

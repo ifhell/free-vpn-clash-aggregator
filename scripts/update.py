@@ -5,11 +5,13 @@ import os
 import platform
 import re
 import shutil
+import socket
 import subprocess
 import sys
 import time
 import urllib.request
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -44,7 +46,17 @@ MIHOMO_MIRROR = os.getenv(
 TEST_TARGETS = [t.strip() for t in os.getenv("TEST_TARGETS", "https://www.google.com,https://www.youtube.com").split(",") if t.strip()]
 MIXED_PORT = int(os.getenv("MIXED_PORT", "7891"))
 CONTROLLER_PORT = int(os.getenv("CONTROLLER_PORT", "9090"))
-TEST_TIMEOUT = int(os.getenv("TEST_TIMEOUT", "10"))
+# Per-target HTTP test budget: connect timeout then total max time.
+TEST_CONNECT_TIMEOUT = int(os.getenv("TEST_CONNECT_TIMEOUT", "3"))
+TEST_TIMEOUT = int(os.getenv("TEST_TIMEOUT", "5"))
+# Parallel mihomo instances used for the full proxy test. Each worker owns its own
+# mihomo process + controller/mixed ports + PROXY group, so workers never race on
+# a shared mixed-port.
+WORKERS = int(os.getenv("WORKERS", "8"))
+# Concurrency for the cheap TCP pre-scan that drops dead nodes before the slow
+# full proxy test. 0 disables the pre-scan entirely.
+PRESCREEN_WORKERS = int(os.getenv("PRESCREEN_WORKERS", "50"))
+PRESCREEN_TIMEOUT = float(os.getenv("PRESCREEN_TIMEOUT", "2"))
 REGION_FILTERS: list[tuple[str, re.Pattern]] = [
     ("港台", re.compile(r"(?i)港|🇭🇰|香港|HKG|Hong|(?:^|[^a-z])HK(?:[^a-z]|$)|台|🇨🇳|台湾|新北|TPE|TWN|Taiwan|(?:^|[^a-z])TW(?:[^a-z]|$)")),
     ("东南亚", re.compile(r"(?i)坡|🇸🇬|新加坡|狮城|SGP|Singapore|(?:^|[^a-z])SG(?:[^a-z]|$)|菲律|🇵🇭|马尼拉|PHL|Philippine|(?:^|[^a-z])PH(?:[^a-z]|$)|越南|🇻🇳|河内|胡志明|VNM|Vietnam|(?:^|[^a-z])VN(?:[^a-z]|$)|马来|🇲🇾|吉隆坡|MYS|Malaysia|(?:^|[^a-z])MY(?:[^a-z]|$)|泰国|🇹🇭|曼谷|THA|Thailand|(?:^|[^a-z])TH(?:[^a-z]|$)|印尼|印度尼|🇮🇩|雅加达|IDN|Indonesia|(?:^|[^a-z])ID(?:[^a-z]|$)|柬埔寨|🇰🇭|金边|老挝|缅甸|🇲🇲|文莱|🇧🇳")),
@@ -198,14 +210,14 @@ def mihomo_binary() -> Path | None:
     return binary
 
 
-def make_mihomo_config(proxies: list[dict]) -> dict:
+def make_mihomo_config(proxies: list[dict], mixed_port: int | None = None, controller_port: int | None = None) -> dict:
     names = [p["name"] for p in proxies]
     return {
-        "mixed-port": MIXED_PORT,
+        "mixed-port": mixed_port or MIXED_PORT,
         "allow-lan": False,
         "mode": "rule",
         "log-level": "error",
-        "external-controller": f"127.0.0.1:{CONTROLLER_PORT}",
+        "external-controller": f"127.0.0.1:{controller_port or CONTROLLER_PORT}",
         "proxies": proxies,
         "proxy-groups": [
             {"name": "PROXY", "type": "select", "proxies": names},
@@ -214,11 +226,12 @@ def make_mihomo_config(proxies: list[dict]) -> dict:
     }
 
 
-def test_proxy(proxy: dict) -> str | None:
+def test_proxy(proxy: dict, mixed_port: int | None = None, controller_port: int | None = None) -> str | None:
     """Test connectivity to TEST_TARGETS. Return None only if every target is
     reachable (HTTP < 400); otherwise a failure category (from the first failing
-    target)."""
-    base = f"http://127.0.0.1:{CONTROLLER_PORT}"
+    target). `mixed_port`/`controller_port` select the mihomo instance to route
+    through (parallel workers each get their own)."""
+    base = f"http://127.0.0.1:{controller_port or CONTROLLER_PORT}"
     name = proxy["name"]
     req = urllib.request.Request(f"{base}/proxies/PROXY", data=json.dumps({"name": name}).encode(), method="PUT", headers={"Content-Type": "application/json"})
     try:
@@ -227,11 +240,11 @@ def test_proxy(proxy: dict) -> str | None:
                 return "controller"
     except Exception:
         return "controller"
-    proxy_url = f"http://127.0.0.1:{MIXED_PORT}"
+    proxy_url = f"http://127.0.0.1:{mixed_port or MIXED_PORT}"
     first_failure: str | None = None
     for target in TEST_TARGETS:
         result = subprocess.run(
-            [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", "5", "--max-time", str(TEST_TIMEOUT), target],
+            [CURL, "-sS", "-o", NULL_DEV, "-w", "%{http_code}", "--proxy", proxy_url, "--connect-timeout", str(TEST_CONNECT_TIMEOUT), "--max-time", str(TEST_TIMEOUT), target],
             capture_output=True,
         )
         stderr = result.stderr.decode(errors="replace")
@@ -255,40 +268,78 @@ def test_proxy(proxy: dict) -> str | None:
     return first_failure
 
 
-def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
-    """Test proxies through a local mihomo instance, honoring and updating the error-proxy cache.
+def _tcp_reachable(proxy: dict) -> bool:
+    """Cheap TCP connect check to the proxy's server:port. Most free nodes are
+    dead; this filters them out in seconds before the expensive full proxy test."""
+    host = proxy.get("server")
+    port = proxy.get("port")
+    if not host or not port:
+        return False
+    try:
+        port = int(port)
+    except (TypeError, ValueError):
+        return False
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(PRESCREEN_TIMEOUT)
+    try:
+        sock.connect((host, port))
+        return True
+    except (OSError, socket.timeout, OverflowError):
+        return False
+    finally:
+        sock.close()
 
-    Returns (passed, error_stats) where error_stats counts tests by outcome:
-    {tested, skipped, passed, dns, connect, timeout, auth, http, controller, unknown}.
-    """
-    config = make_mihomo_config(proxies)
-    cfg_path = ROOT / ".tmp" / "mihomo-runtime.yaml"
+
+def prescreen_proxies(proxies: list[dict]) -> list[dict]:
+    """Concurrently TCP-ping every proxy and keep only those whose server:port
+    accepts a connection. Skips proxies already cached as hard failures."""
+    cache = load_error_proxies()
+    todo = [p for p in proxies if fingerprint(p) not in cache]
+    if not todo:
+        return []
+    reachable: list[dict] = []
+    with ThreadPoolExecutor(max_workers=PRESCREEN_WORKERS) as ex:
+        for proxy, ok in zip(todo, ex.map(_tcp_reachable, todo)):
+            if ok:
+                reachable.append(proxy)
+    return reachable
+
+
+def _test_worker(shard: list[dict], binary: Path, worker_idx: int, cache: dict[tuple, dict]) -> tuple[list[dict], dict, dict]:
+    """Run full proxy tests for one shard on a dedicated mihomo instance.
+
+    Each worker gets its own mixed-port and controller-port so requests never
+    race on a shared port. Returns (passed, stats, new_cache_entries) where
+    new_cache_entries are hard failures this worker discovered; the caller merges
+    them into the shared cache and persists it once (workers never touch the file,
+    avoiding concurrent writes)."""
+    mixed_port = MIXED_PORT + worker_idx
+    controller_port = CONTROLLER_PORT + worker_idx
+    config = make_mihomo_config(shard, mixed_port=mixed_port, controller_port=controller_port)
+    cfg_path = ROOT / ".tmp" / f"mihomo-runtime-{worker_idx}.yaml"
     cfg_path.parent.mkdir(parents=True, exist_ok=True)
     cfg_path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
     proc = subprocess.Popen([str(binary), "-f", str(cfg_path), "-d", str(cfg_path.parent)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    cache = load_error_proxies()
     stats = {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
     passed: list[dict] = []
+    new_entries: dict[tuple, dict] = {}
     now = datetime.now(timezone.utc)
     try:
         for _ in range(60):
             try:
-                urllib.request.urlopen(f"http://127.0.0.1:{CONTROLLER_PORT}/version", timeout=1)
+                urllib.request.urlopen(f"http://127.0.0.1:{controller_port}/version", timeout=1)
                 break
             except Exception:
                 time.sleep(0.5)
         else:
-            raise RuntimeError("mihomo did not start in time")
-        # Sequential is required: the single mixed-port routes every request through
-        # the one shared PROXY group, so concurrent testers would race on it and
-        # each route their curl through a peer's proxy.
-        for proxy in proxies:
+            raise RuntimeError("mihomo worker did not start in time")
+        for proxy in shard:
             key = fingerprint(proxy)
             if key in cache:
                 stats["skipped"] += 1
                 continue
             stats["tested"] += 1
-            reason = test_proxy(proxy)
+            reason = test_proxy(proxy, mixed_port=mixed_port, controller_port=controller_port)
             if reason is None:
                 stats["passed"] += 1
                 passed.append(proxy)
@@ -298,13 +349,50 @@ def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
             # Soft/ambiguous failures (unknown/auth/http/controller) are unreliable and
             # may be working nodes, so do NOT cache them -> they get retested next run.
             if reason in ERROR_HARD_REASONS:
-                cache[key] = {"reason": reason, "at": now.isoformat()}
+                new_entries[key] = {"reason": reason, "at": now.isoformat()}
     finally:
         proc.terminate()
         try:
             proc.wait(timeout=5)
         except subprocess.TimeoutExpired:
             proc.kill()
+    return passed, stats, new_entries
+
+
+def run_tests(proxies: list[dict], binary: Path) -> tuple[list[dict], dict]:
+    """Test proxies for connectivity across parallel mihomo instances, honoring and
+    updating the error-proxy cache.
+
+    Each of `WORKERS` shards is tested on a dedicated mihomo instance with its own
+    mixed/controller ports so requests never race on a shared port. This turns the
+    previously-serial 5-10s-per-node test into a ~WORKERSx speedup.
+
+    Returns (passed, error_stats) where error_stats counts tests by outcome:
+    {tested, skipped, passed, dns, connect, timeout, auth, http, controller, unknown}.
+    """
+    if not proxies:
+        return [], {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
+    cache = load_error_proxies()
+    workers = WORKERS
+    shards: list[list[dict]] = [[] for _ in range(workers)]
+    for i, proxy in enumerate(proxies):
+        shards[i % workers].append(proxy)
+    results: list[tuple[list[dict], dict, dict] | None] = [None] * workers
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        futures = {ex.submit(_test_worker, shard, binary, idx, cache): idx for idx, shard in enumerate(shards) if shard}
+        for fut in futures:
+            idx = futures[fut]
+            results[idx] = fut.result()
+    passed: list[dict] = []
+    stats = {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
+    for res in results:
+        if res is None:
+            continue
+        shard_passed, shard_stats, new_entries = res
+        passed.extend(shard_passed)
+        for k in stats:
+            stats[k] += shard_stats.get(k, 0)
+        cache.update(new_entries)
     save_error_proxies(cache)
     return passed, stats
 
@@ -390,15 +478,20 @@ def main() -> int:
     }
     OUTPUT.write_text("# Generated by scripts/update.py; do not edit.\n" + yaml.safe_dump(generated, allow_unicode=True, sort_keys=False), encoding="utf-8")
 
-    # --- Step 2: connectivity test through a local mihomo instance ---
+    # --- Step 2: TCP pre-scan then full connectivity test through local mihomo ---
     binary = mihomo_binary()
     print("DEBUG: mihomo binary =", binary, flush=True)
-    test_status = {"tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
+    test_status = {"prescreen": 0, "prescreened": 0, "tested": 0, "skipped": 0, "passed": 0, "dns": 0, "connect": 0, "timeout": 0, "auth": 0, "http": 0, "controller": 0, "unknown": 0}
     passing: list[dict] = []
     if binary is not None and proxies:
         print("DEBUG: starting tests on", len(proxies), "proxies", flush=True)
-        passing, test_stats = run_tests(proxies, binary)
-        test_status = test_stats
+        t_prescreen = time.time()
+        alive = prescreen_proxies(proxies)
+        test_status["prescreen"] = len(proxies)
+        test_status["prescreened"] = len(alive)
+        print(f"DEBUG: TCP prescreen kept {len(alive)}/{len(proxies)} in {time.time()-t_prescreen:.1f}s", flush=True)
+        passing, test_stats = run_tests(alive, binary)
+        test_status.update(test_stats)
         print("DEBUG: tests done, passed =", len(passing), flush=True)
 
     # --- Step 3: merge passing nodes with existing best.yaml hit counts, sort, cap ---
